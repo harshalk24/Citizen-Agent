@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldCheck, Lock, ChevronLeft, ArrowRight, Check } from "lucide-react";
 
@@ -33,7 +32,6 @@ interface Props {
 }
 
 export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
-  const router = useRouter();
 
   const [step, setStep]   = useState(1); // start at name step directly
   const [dir,  setDir]    = useState(1);   // 1=forward, -1=back
