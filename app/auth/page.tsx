@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, Phone, Shield, RotateCcw } from "lucide-react";
 
 type Step = "phone" | "otp" | "name";
 
-export default function AuthPage() {
+function AuthPageInner() {
   const router = useRouter();
   const params = useSearchParams();
   const redirect = params.get("from") ?? "/discover";
@@ -324,5 +324,13 @@ export default function AuthPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function AuthPage() {
+  return (
+    <Suspense fallback={null}>
+      <AuthPageInner />
+    </Suspense>
   );
 }
