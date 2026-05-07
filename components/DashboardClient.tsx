@@ -152,81 +152,23 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
           </div>
         </div>
 
-        {/* Empty state */}
+        {/* Empty state — get started prompt (full width, above grid) */}
         {!hasProfile && (
-          <>
-            <div style={{
-              background: "var(--paper)", border: "1px solid var(--line)",
-              borderRadius: 16, padding: "48px 32px", textAlign: "center", marginBottom: 32,
-            }}>
-              <div className="eyebrow" style={{ marginBottom: 12 }}>Get started</div>
-              <h2 style={{ fontSize: 20, fontWeight: 600, color: "var(--ink)", marginBottom: 8 }}>
-                Tell your agent your situation
-              </h2>
-              <p style={{ fontSize: 14, color: "var(--ink-mute)", marginBottom: 24, maxWidth: 440, margin: "0 auto 24px" }}>
-                Three taps and your agent maps every government benefit you qualify for — with a week-by-week plan to claim them.
-              </p>
-              <Link href="/discover" className="btn btn-primary" style={{ borderRadius: 8 }}>
-                Build my situation <ArrowRight size={14} />
-              </Link>
-            </div>
-
-            {locationServices.length > 0 && (
-              <div style={{ marginTop: 24 }}>
-                <div style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  marginBottom: 14, paddingBottom: 12,
-                  borderBottom: "2px solid rgba(106,166,216,0.4)",
-                }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <div style={{
-                      width: 32, height: 32, borderRadius: 8,
-                      background: "rgba(106,166,216,0.15)",
-                      border: "1px solid rgba(106,166,216,0.3)",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: 16,
-                    }}>
-                      {countryFlag(citizen.country)}
-                    </div>
-                    <h2 style={{ fontSize: 18, fontWeight: 700, color: 'var(--ink)', letterSpacing: "-0.01em" }}>
-                      What&apos;s New in {countryName(citizen.country)}
-                    </h2>
-                  </div>
-                  <span style={{ fontSize: 11, color: 'var(--primary)', fontWeight: 500 }}>Recently available</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  {locationServices.map(svc => (
-                    <div key={svc.id} style={{
-                      background: 'var(--paper)',
-                      border: '1px solid var(--line)',
-                      borderLeft: '3px solid rgba(106,166,216,0.5)',
-                      borderRadius: 10, padding: '12px 14px',
-                      display: 'flex', alignItems: 'center', gap: 12,
-                      boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
-                    }}>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                          {svc.name}
-                        </div>
-                        <div style={{ fontSize: 11, color: 'var(--ink-faint)' }}>{svc.agency}</div>
-                      </div>
-                      {svc.amount && (
-                        <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--primary)', flexShrink: 0 }}>{svc.amount}</span>
-                      )}
-                      <span style={{
-                        fontSize: 10, fontWeight: 600, color: 'var(--primary)',
-                        background: 'rgba(106,166,216,0.1)',
-                        border: '1px solid rgba(106,166,216,0.2)',
-                        borderRadius: 4, padding: '2px 8px', flexShrink: 0
-                      }}>
-                        Week {svc.weekToApply}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </>
+          <div style={{
+            background: "var(--paper)", border: "1px solid var(--line)",
+            borderRadius: 16, padding: "48px 32px", textAlign: "center", marginBottom: 28,
+          }}>
+            <div className="eyebrow" style={{ marginBottom: 12 }}>Get started</div>
+            <h2 style={{ fontSize: 20, fontWeight: 600, color: "var(--ink)", marginBottom: 8 }}>
+              Tell your agent your situation
+            </h2>
+            <p style={{ fontSize: 14, color: "var(--ink-mute)", marginBottom: 24, maxWidth: 440, margin: "0 auto 24px" }}>
+              Three taps and your agent maps every government benefit you qualify for — with a week-by-week plan to claim them.
+            </p>
+            <Link href="/discover" className="btn btn-primary" style={{ borderRadius: 8 }}>
+              Build my situation <ArrowRight size={14} />
+            </Link>
+          </div>
         )}
 
         {/* Stats */}
@@ -402,8 +344,8 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
               </div>
             )}
 
-            {/* What's New — shown when profile is set */}
-            {hasProfile && locationServices.length > 0 && (
+            {/* What's New — always shown when location services exist */}
+            {locationServices.length > 0 && (
               <div style={{ marginTop: 24 }}>
                 <div style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
