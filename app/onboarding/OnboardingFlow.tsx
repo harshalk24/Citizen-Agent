@@ -35,7 +35,7 @@ interface Props {
 export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
   const router = useRouter();
 
-  const [step, setStep]   = useState(0);
+  const [step, setStep]   = useState(1); // start at name step directly
   const [dir,  setDir]    = useState(1);   // 1=forward, -1=back
   const [done, setDone]   = useState(false);
 
@@ -46,13 +46,6 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
 
   const nameRef  = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-
-  // Screen 0: auto-advance after 800ms
-  useEffect(() => {
-    if (step !== 0) return;
-    const t = setTimeout(() => { setDir(1); setStep(1); }, 800);
-    return () => clearTimeout(t);
-  }, [step]);
 
   // Auto-focus text inputs when screen appears
   useEffect(() => {
@@ -147,7 +140,7 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
       overflow: "hidden",
     }}>
       {/* Back arrow — screens 2, 3, 4 only */}
-      {step >= 2 && step <= 4 && (
+      {step >= 2 && step <= 4 && !done && (
         <button
           onClick={goBack}
           style={{
