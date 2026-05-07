@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Citizen {
+  id           String         @id @default(cuid())
+  phone        String?        @unique
+  name         String?
+  country      String         @default("IE")
+  employment   String?
+  lifeEvent    String?
+  firstName    String?
+  email        String?
+  gender       String?
+  onboarded      Boolean        @default(false)
+  profileContext String?
+  verified       Boolean        @default(false)
+  createdAt    DateTime       @default(now())
+  sessions     Session[]
+  savedServices SavedService[]
+  deadlines    Deadline[]
+  actionPlans  ActionPlan[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  citizenId String?
+  citizen   Citizen? @relation(fields: [citizenId], references: [id])
+  messages  String   @default("[]")
+  context   String   @default("open")
+  summary   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SavedService {
+  id          String   @id @default(cuid())
+  citizenId   String
+  citizen     Citizen  @relation(fields: [citizenId], references: [id])
+  serviceId   String
+  serviceName String
+  agency      String
+  amount      String?
+  status      String   @default("not_started")
+  priority    String   @default("medium")
+  createdAt   DateTime @default(now())
+
+  @@unique([citizenId, serviceId])
+}
+
+model Deadline {
+  id          String   @id @default(cuid())
+  citizenId   String
+  citizen     Citizen  @relation(fields: [citizenId], references: [id])
+  title       String
+  serviceName String?
+  dueDate     DateTime
+  description String?
+  reminded    Boolean  @default(false)
+  completed   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model ActionPlan {
+  id        String   @id @default(cuid())
+  citizenId String
+  citizen   Citizen  @relation(fields: [citizenId], references: [id])
+  planJson  String
+  lifeEvent String
+  country   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

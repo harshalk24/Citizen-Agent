@@ -1,0 +1,1016 @@
+[
+  {
+    "serviceId": "ie-maternity-benefit",
+    "serviceName": "Maternity Benefit",
+    "url": "https://www.welfare.ie/en/Pages/Apply-for-Maternity-Benefit-Online.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.237Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-paternity-benefit",
+    "serviceName": "Paternity Benefit",
+    "url": "https://www.welfare.ie/en/Pages/Apply-Online-for-Paternity-Benefit.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-parents-benefit",
+    "serviceName": "Parent's Benefit",
+    "url": "https://www.welfare.ie/en/Pages/Apply-Online-for-Parents-Benefit.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-child-benefit",
+    "serviceName": "Child Benefit",
+    "url": "https://www.welfare.ie/en/Pages/Apply-for-Child-Benefit-Online.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-maternity-infant-care",
+    "serviceName": "Maternity & Infant Care Scheme",
+    "url": "https://www2.hse.ie/services/maternity-and-infant-care-scheme/",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-public-health-nurse",
+    "serviceName": "Public Health Nurse Home Visit",
+    "url": "https://www2.hse.ie/services/public-health-nursing/",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-gp-visit-card-under8",
+    "serviceName": "GP Visit Card — Children Under 8",
+    "url": "https://www.sspcrs.ie/portal/free-gp-care/pub/application",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-ecce",
+    "serviceName": "ECCE Free Pre-School Scheme",
+    "url": "https://ncs.gov.ie/en/Programmes/ECCE/ECCE.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-maternity-benefit-se",
+    "serviceName": "Maternity Benefit (Self-Employed)",
+    "url": "https://www.welfare.ie/en/Pages/Apply-for-Maternity-Benefit-Online.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-working-family-payment",
+    "serviceName": "Working Family Payment",
+    "url": "https://www.welfare.ie/en/Pages/Working-Family-Payment-Online-Application.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-jobseekers-benefit",
+    "serviceName": "Jobseeker's Benefit",
+    "url": "https://www.welfare.ie/en/Pages/Apply-Online-for-Jobseekers-Benefit.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-jobseekers-allowance",
+    "serviceName": "Jobseeker's Allowance",
+    "url": "https://www.welfare.ie/en/Pages/Apply-Online-for-Jobseekers-Allowance.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-back-to-education",
+    "serviceName": "Back to Education Allowance",
+    "url": "https://www.welfare.ie/en/Pages/BackToEducation.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-back-to-work-enterprise",
+    "serviceName": "Back to Work Enterprise Allowance",
+    "url": "https://www.welfare.ie/en/Pages/Back-to-Work-Enterprise-Allowance-BTWEA.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.238Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-housing-assistance",
+    "serviceName": "Housing Assistance Payment (HAP)",
+    "url": "https://www.hap.ie/apply/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-medical-card",
+    "serviceName": "Medical Card",
+    "url": "https://www.medicalcard.ie/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-community-employment",
+    "serviceName": "Community Employment Scheme",
+    "url": "https://www.welfare.ie/en/Pages/community-employment-scheme.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-new-enterprise-allowance",
+    "serviceName": "New Enterprise Allowance (NEA)",
+    "url": "https://www.welfare.ie/en/Pages/Back-to-Work-Enterprise-Allowance-BTWEA.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-leo-grant",
+    "serviceName": "Local Enterprise Office (LEO) Priming Grant",
+    "url": "https://www.localenterprise.ie/Discover-Business-Supports/Trading-Online-Voucher-Scheme/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-cro-registration",
+    "serviceName": "CRO Company Registration",
+    "url": "https://www.core.ie/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-revenue-registration",
+    "serviceName": "Revenue Tax Registration",
+    "url": "https://www.ros.ie/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-ei-competitive-start",
+    "serviceName": "Enterprise Ireland Competitive Start Fund",
+    "url": "https://www.enterprise-ireland.com/en/funding-supports/company/competitive-start-fund/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-microfinance",
+    "serviceName": "Microfinance Ireland Loan",
+    "url": "https://microfinanceireland.ie/how-to-apply/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ie-startup-tax-relief",
+    "serviceName": "Start-Up Relief for Entrepreneurs (SURE)",
+    "url": "https://www.revenue.ie/en/self-assessment-and-self-employment/sure/index.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-parental-leave",
+    "serviceName": "Parental Leave (UAE Labour Law)",
+    "url": "https://www.mohre.gov.ae/en/services/mohre-services.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-birth-registration",
+    "serviceName": "TAMM Birth Registration",
+    "url": "https://icp.gov.ae/en/services",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-health-insurance-newborn",
+    "serviceName": "Newborn Health Insurance Coverage",
+    "url": "https://www.dha.gov.ae/en/services",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-abu-dhabi-child-allowance",
+    "serviceName": "Abu Dhabi Children's Allowance (Nationals)",
+    "url": "https://www.tamm.abudhabi/en/family-and-individuals/personal-affairs/children/childrens-allowance",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-maternity-insurance",
+    "serviceName": "Maternity Health Package",
+    "url": "https://iloe.mohre.gov.ae/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-iloe",
+    "serviceName": "ILOE — Involuntary Loss of Employment Insurance",
+    "url": "https://iloe.mohre.gov.ae/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-end-of-service",
+    "serviceName": "End-of-Service Gratuity",
+    "url": "https://www.mohre.gov.ae/en/services/mohre-services.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-visa-grace-period",
+    "serviceName": "Employment Visa Grace Period",
+    "url": "https://icp.gov.ae/en/services",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-mohre-job-portal",
+    "serviceName": "Ministry of HR Job Portal",
+    "url": "https://www.mohre.gov.ae/en/services/mohre-services/job-seekers.aspx",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-ded-trade-license",
+    "serviceName": "Dubai DED Trade License",
+    "url": "https://invest.dubai.gov.ae/en/set-up/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-free-zone",
+    "serviceName": "Free Zone Company Setup",
+    "url": "https://www.jafza.ae/set-up-your-business/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-khalifa-fund",
+    "serviceName": "Khalifa Fund for Entrepreneurship",
+    "url": "https://www.khalifafund.ae/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-edb-sme-loan",
+    "serviceName": "Emirates Development Bank SME Loan",
+    "url": "https://www.edb.gov.ae/en/services/sme-finance.html",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "uae-uae-pass",
+    "serviceName": "UAE PASS — Government eServices Registration",
+    "url": "https://www.uaepass.ae/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-maternity-leave",
+    "serviceName": "Maternity Leave — 100% Employer Paid",
+    "url": "https://www.rssb.rw/en/services",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-birth-registration",
+    "serviceName": "Irembo Birth Registration",
+    "url": "https://irembo.gov.rw/rolportal/en/web/irembo/home",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-mutuelle-de-sante",
+    "serviceName": "Mutuelle de Santé (Community Health Insurance)",
+    "url": "https://irembo.gov.rw/rolportal/en/web/irembo/home",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-vup",
+    "serviceName": "VUP — Vision 2020 Umurenge Social Protection",
+    "url": "https://www.minaloc.gov.rw/index.php/en/programmes/vup",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-rssb-social-security",
+    "serviceName": "RSSB Social Security Claim",
+    "url": "https://www.rssb.rw/en/services",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-wda-skills",
+    "serviceName": "WDA Skills Development Programs",
+    "url": "https://www.wda.gov.rw/index.php/en/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-employment-services",
+    "serviceName": "Public Employment Services Centre",
+    "url": "https://www.mifotra.gov.rw/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-irembo-business-reg",
+    "serviceName": "Irembo Business Registration",
+    "url": "https://irembo.gov.rw/rolportal/en/web/irembo/home",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-rra-tax-registration",
+    "serviceName": "RRA Tax Registration (TIN)",
+    "url": "https://www.rra.gov.rw/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-bdf-guarantee",
+    "serviceName": "BDF SME Loan Guarantee",
+    "url": "https://www.bdf.rw/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-rdb-investment-cert",
+    "serviceName": "RDB Investment Certificate",
+    "url": "https://www.rdb.rw/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "rw-africa-free-trade",
+    "serviceName": "AfCFTA Market Access Support",
+    "url": "https://www.tradeportal.rw/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-maternity-benefit",
+    "serviceName": "Maternity Benefit",
+    "url": "https://labour.gov.in/maternity-benefit-act",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-pmmvy",
+    "serviceName": "PMMVY — Maternity Benefit Programme",
+    "url": "https://pmmvy.wcd.gov.in/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-uip-vaccination",
+    "serviceName": "Universal Immunisation Programme",
+    "url": "https://www.nhp.gov.in/immunization_pg",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-jsy",
+    "serviceName": "Janani Suraksha Yojana",
+    "url": "https://nhm.gov.in/index1.php?lang=1&level=2&sublinkid=842",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-birth-registration",
+    "serviceName": "Birth Registration (Civil Registration System)",
+    "url": "https://crsorgi.gov.in/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-esi-unemployment",
+    "serviceName": "ESI Unemployment Allowance",
+    "url": "https://www.esic.gov.in/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-svanidhi",
+    "serviceName": "PM SVANidhi — Street Vendor Loan",
+    "url": "https://pmsvanidhi.mohua.gov.in/",
+    "scrapedAt": "2026-05-06T11:37:15.239Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-ncs-portal",
+    "serviceName": "National Career Service (NCS) Portal",
+    "url": "https://www.ncs.gov.in/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-pmkvy",
+    "serviceName": "PMKVY — Free Skill Training",
+    "url": "https://www.pmkvyofficial.org/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-udyam",
+    "serviceName": "Udyam Registration (MSME)",
+    "url": "https://udyamregistration.gov.in/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-gst",
+    "serviceName": "GST Registration",
+    "url": "https://www.gst.gov.in/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-startup-india",
+    "serviceName": "Startup India Recognition",
+    "url": "https://www.startupindia.gov.in/content/sih/en/startupgov/startup-recognition-page.html",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-mudra",
+    "serviceName": "PM MUDRA Loan (Micro Units Development)",
+    "url": "https://www.mudra.org.in/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "in-trade-license",
+    "serviceName": "Trade License",
+    "url": "https://www.india.gov.in/topics/local-government/trade-license",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-pfl",
+    "serviceName": "California Paid Family Leave",
+    "url": "https://edd.ca.gov/en/disability/paid-family-leave/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-sdi-pregnancy",
+    "serviceName": "SDI Pregnancy Disability Leave",
+    "url": "https://edd.ca.gov/en/disability/apply_for_di_benefits_online/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-calworks",
+    "serviceName": "CalWORKs Cash Aid",
+    "url": "https://benefitscal.com/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-wic",
+    "serviceName": "WIC — Nutrition Program",
+    "url": "https://www.myfamily.wic.ca.gov/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-medicaid-infant",
+    "serviceName": "Medi-Cal (Medicaid) for Newborns",
+    "url": "https://benefitscal.com/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-ui",
+    "serviceName": "Unemployment Insurance",
+    "url": "https://edd.ca.gov/en/unemployment/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-calfresh",
+    "serviceName": "CalFresh Food Benefits",
+    "url": "https://benefitscal.com/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-medicaid-jobloss",
+    "serviceName": "Medi-Cal Health Coverage",
+    "url": "https://benefitscal.com/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-edd-jobs",
+    "serviceName": "America's Job Center of California",
+    "url": "https://www.caljobs.ca.gov/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-biz-registration",
+    "serviceName": "Business Entity Registration",
+    "url": "https://bizfileonline.sos.ca.gov/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-sellers-permit",
+    "serviceName": "Seller's Permit",
+    "url": "https://www.cdtfa.ca.gov/services/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-ein",
+    "serviceName": "Federal EIN (Tax ID)",
+    "url": "https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-osba-grants",
+    "serviceName": "CA Small Business & Nonprofit Relief Grants",
+    "url": "https://calosba.ca.gov/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  },
+  {
+    "serviceId": "ca-city-license",
+    "serviceName": "City Business License",
+    "url": "https://www.calgold.ca.gov/",
+    "scrapedAt": "2026-05-06T11:37:15.240Z",
+    "status": "skipped",
+    "foundAmounts": [],
+    "foundDeadlines": [],
+    "diffs": [],
+    "notes": [
+      "dry run"
+    ]
+  }
+]

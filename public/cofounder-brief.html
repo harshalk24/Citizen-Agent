@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Citizen Assist by Modveon — Co-founder Brief</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #f0f2f5;
+      --ink-2:     #c8cdd6;
+      --ink-mute:  #8b95a3;
+      --ink-faint: #4a5260;
+      --bg:        #0b0d10;
+      --paper:     #141720;
+      --line:      rgba(255,255,255,0.07);
+      --primary:   #6aa6d8;
+      --primary-soft: rgba(106,166,216,0.1);
+      --eligible:  #48c78e;
+      --partial:   #d6a35a;
+      --ineligible:#e05c6a;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .page { max-width: 900px; margin: 0 auto; padding: 60px 40px 80px; }
+
+    /* ── Header ── */
+    .header { text-align: center; margin-bottom: 64px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary-soft);
+      border: 1px solid rgba(106,166,216,0.2);
+      border-radius: 999px; padding: 6px 18px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--primary);
+      margin-bottom: 24px;
+    }
+    .logo {
+      font-size: 28px; font-weight: 800; letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #fff 0%, #6aa6d8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 8px;
+    }
+    h1 { font-size: 42px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+    h1 span { color: var(--primary); }
+    .tagline { font-size: 17px; color: var(--ink-mute); max-width: 540px; margin: 0 auto 32px; line-height: 1.7; }
+
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 32px; }
+    .stat-card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 12px; padding: 18px 20px;
+    }
+    .stat-num { font-size: 30px; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; }
+    .stat-label { font-size: 12px; color: var(--ink-mute); margin-top: 2px; }
+
+    /* ── Section ── */
+    .section { margin-bottom: 56px; }
+    .section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--primary);
+      margin-bottom: 8px;
+    }
+    h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .section-sub { font-size: 14px; color: var(--ink-mute); margin-bottom: 28px; }
+
+    /* ── Feature cards ── */
+    .features { display: flex; flex-direction: column; gap: 16px; }
+    .feature {
+      background: var(--paper); border: 1px solid var(--line);
+      border-left: 3px solid var(--primary);
+      border-radius: 12px; padding: 22px 24px;
+      display: grid; grid-template-columns: 44px 1fr; gap: 18px; align-items: start;
+    }
+    .feature-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--primary-soft); border: 1px solid rgba(106,166,216,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .feature-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .feature-desc { font-size: 13px; color: var(--ink-mute); line-height: 1.6; margin-bottom: 10px; }
+    .feature-example {
+      font-size: 12px; background: rgba(106,166,216,0.07);
+      border: 1px solid rgba(106,166,216,0.15); border-radius: 6px;
+      padding: 8px 12px; color: var(--ink-2); line-height: 1.6;
+    }
+    .feature-example strong { color: var(--primary); font-weight: 600; }
+
+    /* ── Demo walkthrough ── */
+    .personas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 32px; }
+    .persona {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 12px; padding: 18px;
+    }
+    .persona-emoji { font-size: 28px; margin-bottom: 8px; }
+    .persona-name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .persona-desc { font-size: 12px; color: var(--ink-mute); line-height: 1.5; }
+
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: grid; grid-template-columns: 32px 1fr; gap: 16px;
+      padding: 0 0 24px 0; position: relative;
+    }
+    .step:not(:last-child)::before {
+      content: ''; position: absolute;
+      left: 15px; top: 32px; bottom: 0;
+      width: 1px; background: var(--line);
+    }
+    .step-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--primary-soft); border: 1px solid rgba(106,166,216,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--primary);
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .step-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; padding-top: 5px; }
+    .step-detail { font-size: 13px; color: var(--ink-mute); line-height: 1.6; }
+    .step-url {
+      display: inline-block; margin-top: 6px;
+      font-size: 11px; font-weight: 600;
+      color: var(--primary); background: var(--primary-soft);
+      border: 1px solid rgba(106,166,216,0.2);
+      border-radius: 4px; padding: 2px 8px;
+    }
+
+    /* ── Use cases table ── */
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead th {
+      text-align: left; padding: 10px 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-mute);
+      border-bottom: 1px solid var(--line);
+    }
+    tbody tr { border-bottom: 1px solid var(--line); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody td { padding: 12px 14px; color: var(--ink-2); vertical-align: top; }
+    tbody td:first-child { color: var(--ink); font-weight: 500; }
+    .pill {
+      display: inline-block; border-radius: 999px; padding: 2px 10px;
+      font-size: 11px; font-weight: 600;
+    }
+    .pill-g { background: rgba(72,199,142,0.12); color: var(--eligible); }
+    .pill-y { background: rgba(214,163,90,0.12); color: var(--partial); }
+
+    /* ── Roadmap ── */
+    .roadmap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .rm-card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 10px; padding: 16px 18px;
+    }
+    .rm-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .rm-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .rm-desc { font-size: 12px; color: var(--ink-mute); line-height: 1.5; }
+    .now { color: var(--eligible); }
+    .soon { color: var(--partial); }
+    .later { color: var(--ink-mute); }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 64px; padding-top: 32px;
+      border-top: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-logo { font-size: 18px; font-weight: 800; letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #fff 0%, #6aa6d8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .footer-note { font-size: 12px; color: var(--ink-faint); }
+
+    /* ── Print ── */
+    @media print {
+      body { background: #fff; color: #111; }
+      :root { --bg: #fff; --paper: #f5f7fa; --ink: #111; --ink-2: #333; --ink-mute: #666; --line: #e0e0e0; }
+      .page { padding: 20px; }
+      h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Header ── -->
+  <div class="header">
+    <div class="badge">⚡ Internal Product Brief · MVP v1.0</div>
+    <div class="logo">Modveon</div>
+    <h1>Your government, <span>on your side</span></h1>
+    <p class="tagline">
+      Citizen Assist is an AI agent that tells citizens exactly what benefits they qualify for,
+      builds a week-by-week action plan to claim them, and answers every question along the way —
+      in 3 taps, no forms, no waiting rooms.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-num">4%</div>
+        <div class="stat-label">of government AI actually serves citizens directly (OECD, 2025). That's the gap we fill.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5 countries</div>
+        <div class="stat-label">Ireland · UAE · Rwanda · India · California — live in MVP</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">$1.75T</div>
+        <div class="stat-label">annual public sector productivity gains from GenAI by 2033 (BCG)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── What it does ── -->
+  <div class="section">
+    <div class="section-label">The Product</div>
+    <h2>Five screens. Complete citizen journey.</h2>
+    <p class="section-sub">Everything a citizen needs from their government — from discovery to action — in one place.</p>
+
+    <div class="features">
+
+      <div class="feature">
+        <div class="feature-icon">🎯</div>
+        <div>
+          <div class="feature-title">My Situation — Entitlement Discovery</div>
+          <div class="feature-desc">
+            3 taps: pick your life event, employment status, and country. The AI instantly surfaces every government benefit,
+            grant, and scheme you qualify for — with amounts, deadlines, and documents needed. No forms. No jargon.
+          </div>
+          <div class="feature-example">
+            <strong>Example:</strong> Amara just lost her job in Dublin. She taps "Lost my job" → Ireland →
+            the system surfaces Jobseeker's Benefit (€232/week), Back to Education Allowance, and 4 other schemes —
+            all in under 3 seconds. Total potential value: <strong>€8,400/year</strong>.
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">📋</div>
+        <div>
+          <div class="feature-title">Action Plan — Week-by-Week Roadmap</div>
+          <div class="feature-desc">
+            The AI generates a prioritised action plan: what to apply for this week, what can wait, what documents
+            to gather. Each step is sequenced to maximise approval chances and avoid missed deadlines.
+          </div>
+          <div class="feature-example">
+            <strong>Example:</strong> Rohan in Mumbai just had a baby. His plan says: <strong>Week 1</strong> — register the birth,
+            apply for Maternity Benefit. <strong>Week 2</strong> — claim Child Care Subsidy. <strong>Month 3</strong> — apply for
+            PM MATRU VANDANA. Total unclaimed value identified: <strong>₹35,000</strong>.
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🤖</div>
+        <div>
+          <div class="feature-title">AI Agent Chat — Your Personal Government Guide</div>
+          <div class="feature-desc">
+            A conversational AI that knows your situation, understands your country's benefit system,
+            and answers specific questions — not just generic information. It links directly to the schemes
+            relevant to you and explains eligibility in plain language.
+          </div>
+          <div class="feature-example">
+            <strong>Example:</strong> Sarah asks "Will I lose my Jobseeker's if I do a part-time course?"
+            The agent explains the Back to Education rules for Ireland, tells her exactly which form to submit,
+            and links directly to the Department of Social Protection portal.
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <div>
+          <div class="feature-title">Dashboard — Citizen Control Centre</div>
+          <div class="feature-desc">
+            A personal dashboard tracking every entitlement, its status (not started / in progress / completed),
+            upcoming deadlines, and a summary of the action plan. Citizens see their full benefit picture at a glance.
+          </div>
+          <div class="feature-example">
+            <strong>Example:</strong> Fatima checks her dashboard 3 weeks after starting a business in the UAE.
+            She sees: 2 schemes completed ✓, 3 in progress, 1 deadline in 8 days (trade licence renewal).
+            She clicks "Ask agent" on the renewal and gets exact steps in 10 seconds.
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">👤</div>
+        <div>
+          <div class="feature-title">My Profile — Richer Context, Better Results</div>
+          <div class="feature-desc">
+            Citizens can enrich their profile with salary range, housing status, family details, and goals.
+            When saved, this automatically re-runs the entitlement check — surfacing schemes they wouldn't have
+            found with just the 3-tap flow.
+          </div>
+          <div class="feature-example">
+            <strong>Example:</strong> David adds "2 dependents" and "Renting" to his Ireland profile after job loss.
+            The system immediately re-runs and surfaces Rent Tax Credit and Child Benefit on top of his existing results —
+            <strong>€1,800/year</strong> he didn't know about.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Demo script ── -->
+  <div class="section">
+    <div class="section-label">Demo Script</div>
+    <h2>3 personas. 5 minutes each.</h2>
+    <p class="section-sub">Use these exact scenarios to demo the product. Each one starts from a fresh browser tab.</p>
+
+    <div class="personas">
+      <div class="persona">
+        <div class="persona-emoji">👩‍💼</div>
+        <div class="persona-name">Amara, Ireland</div>
+        <div class="persona-desc">Just lost her job at a Dublin tech company. Single, renting, 1 child.</div>
+      </div>
+      <div class="persona">
+        <div class="persona-emoji">👨‍👩‍👦</div>
+        <div class="persona-name">Rohan, India</div>
+        <div class="persona-desc">Software engineer in Bangalore. Wife just had their first baby.</div>
+      </div>
+      <div class="persona">
+        <div class="persona-emoji">👩‍💻</div>
+        <div class="persona-name">Fatima, UAE</div>
+        <div class="persona-desc">Starting a food-tech business in Dubai. Previously employed.</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Open the app & sign up</div>
+          <div class="step-detail">
+            Go to the app URL. Enter a phone number (any format works in MVP — no SMS verification in demo mode).
+            You land on the Dashboard with an empty state.
+          </div>
+          <span class="step-url">→ /auth</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">Run the 3-tap entitlement lookup</div>
+          <div class="step-detail">
+            Click "My Situation" in the nav. For Amara: tap <strong>Lost my job</strong> (employment auto-locks to Unemployed)
+            → tap <strong>Ireland</strong>. Results appear in ~2 seconds: 6+ schemes, total value shown, grouped by week.
+          </div>
+          <span class="step-url">→ /discover</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Expand a card & click "Ask about this"</div>
+          <div class="step-detail">
+            Click any entitlement card to expand it. Show the documents needed and deadline. Then click
+            <strong>"Ask about this"</strong> — it opens a pre-loaded chat with context about that specific scheme.
+            Ask: "Do I qualify if I was self-employed before?"
+          </div>
+          <span class="step-url">→ /chat/entitlement-[id]</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Generate the action plan</div>
+          <div class="step-detail">
+            Click "Generate action plan" from the results page. The AI builds a week-by-week plan with
+            specific tasks, priorities, and deadlines. Show the timeline — Week 1 tasks vs. Month 3.
+          </div>
+          <span class="step-url">→ /plan</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <div class="step-title">Show the dashboard & status tracking</div>
+          <div class="step-detail">
+            Navigate to Dashboard. Show the stats (services found, in progress, completed). Click the status
+            badge on a service to cycle it from "Not started" → "In progress" — it updates in real time.
+            Point out the upcoming deadlines panel.
+          </div>
+          <span class="step-url">→ /dashboard</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div>
+          <div class="step-title">Update profile → auto-refresh entitlements</div>
+          <div class="step-detail">
+            Click "My Profile". Add dependents: 1, housing: Renting. Click
+            <strong>"Save &amp; refresh my entitlements"</strong> — it redirects to Discover with a green banner
+            and immediately re-runs the lookup with the richer profile context.
+          </div>
+          <span class="step-url">→ /update-situation → /discover?from=profile</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Use cases table ── -->
+  <div class="section">
+    <div class="section-label">Use Cases</div>
+    <h2>Who uses this and what they get</h2>
+    <p class="section-sub">Real scenarios across all 5 supported countries.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Persona</th>
+          <th>Country</th>
+          <th>Life Event</th>
+          <th>Key benefits surfaced</th>
+          <th>Estimated value</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>New parent, employed</td>
+          <td>🇮🇪 Ireland</td>
+          <td>Having a baby</td>
+          <td>Maternity Benefit, Child Benefit, One-Parent Family</td>
+          <td>€14,200/yr</td>
+          <td><span class="pill pill-g">Live</span></td>
+        </tr>
+        <tr>
+          <td>Laid-off worker</td>
+          <td>🇮🇪 Ireland</td>
+          <td>Lost my job</td>
+          <td>Jobseeker's Benefit, Back to Education, Housing Support</td>
+          <td>€8,400/yr</td>
+          <td><span class="pill pill-g">Live</span></td>
+        </tr>
+        <tr>
+          <td>New entrepreneur</td>
+          <td>🇦🇪 UAE</td>
+          <td>Starting a business</td>
+          <td>SME Fund, Khalifa Fund, Free Zone Licence Subsidy</td>
+          <td>AED 50,000</td>
+          <td><span class="pill pill-g">Live</span></td>
+        </tr>
+        <tr>
+          <td>First-time parent</td>
+          <td>🇮🇳 India</td>
+          <td>Having a baby</td>
+          <td>PM Matru Vandana, Maternity Benefit Act, Child Care Leave</td>
+          <td>₹35,000</td>
+          <td><span class="pill pill-g">Live</span></td>
+        </tr>
+        <tr>
+          <td>Redundant worker</td>
+          <td>🇷🇼 Rwanda</td>
+          <td>Lost my job</td>
+          <td>RSSB Occupational Hazard, TVET Skills Training, WDA Grants</td>
+          <td>RWF 200,000</td>
+          <td><span class="pill pill-g">Live</span></td>
+        </tr>
+        <tr>
+          <td>Freelancer</td>
+          <td>🇺🇸 California</td>
+          <td>Starting a business</td>
+          <td>EDD Disability, CalFresh, Small Business Grants</td>
+          <td>$6,800/yr</td>
+          <td><span class="pill pill-g">Live</span></td>
+        </tr>
+        <tr>
+          <td>Bereaved spouse</td>
+          <td>🇮🇪 Ireland</td>
+          <td>Bereavement</td>
+          <td>Widow's/Widower's Pension, Bereavement Grant</td>
+          <td>€12,000/yr</td>
+          <td><span class="pill pill-y">Roadmap</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Roadmap ── -->
+  <div class="section">
+    <div class="section-label">Roadmap</div>
+    <h2>What's built vs. what's next</h2>
+    <p class="section-sub">MVP is live. Next sprint focuses on closing the top pain points from the research brief.</p>
+
+    <div class="roadmap">
+      <div class="rm-card">
+        <div class="rm-tag now">✓ Live in MVP</div>
+        <div class="rm-title">3-tap entitlement discovery</div>
+        <div class="rm-desc">Life event → employment → country. Auto-submits when all 3 selected. Results in &lt;3s.</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-tag now">✓ Live in MVP</div>
+        <div class="rm-title">AI action plan generator</div>
+        <div class="rm-desc">Week-by-week sequenced plan from Gemini. Saves to DB, shows on dashboard.</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-tag now">✓ Live in MVP</div>
+        <div class="rm-title">Context-aware AI chat</div>
+        <div class="rm-desc">Pre-loaded with citizen situation. Scheme-specific and open conversations.</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-tag now">✓ Live in MVP</div>
+        <div class="rm-title">Profile → auto entitlement refresh</div>
+        <div class="rm-desc">Updating profile re-runs the full entitlement lookup with richer context.</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-tag now">✓ Live in MVP</div>
+        <div class="rm-title">Employment auto-lock on life event</div>
+        <div class="rm-desc">"Lost my job" → Unemployed locked. "Starting a business" → Self-employed locked.</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-tag soon">→ Next sprint</div>
+        <div class="rm-title">Application status tracker</div>
+        <div class="rm-desc">Self-log submission date + reference number. Closes "status opacity" pain point.</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-tag soon">→ Next sprint</div>
+        <div class="rm-title">Deadline reminders</div>
+        <div class="rm-desc">"Remind me" button on each entitlement. Email alert 2 weeks before expiry.</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-tag soon">→ Next sprint</div>
+        <div class="rm-title">"What if I'm rejected?" guidance</div>
+        <div class="rm-desc">Appeal routes and review process surfaced on every entitlement card.</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-tag later">◌ Later</div>
+        <div class="rm-title">Bereavement + Marriage life events</div>
+        <div class="rm-desc">Two high-frequency, high-emotion moments not yet covered in the 3-tap flow.</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-tag later">◌ Later</div>
+        <div class="rm-title">Multilingual access</div>
+        <div class="rm-desc">Hindi, Arabic, Kinyarwanda. Unlocks excluded populations and emerging markets.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Tech stack ── -->
+  <div class="section">
+    <div class="section-label">Under the Hood</div>
+    <h2>Stack & key decisions</h2>
+    <p class="section-sub">Built to move fast, deploy globally, and scale without re-architecture.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">Frontend</div>
+        <div style="font-size: 13px; color: var(--ink-2); line-height: 1.8;">
+          Next.js 14 App Router<br/>
+          React 18 · TypeScript<br/>
+          Tailwind CSS + inline styles<br/>
+          Lucide icons · Framer Motion
+        </div>
+      </div>
+      <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">Backend</div>
+        <div style="font-size: 13px; color: var(--ink-2); line-height: 1.8;">
+          Next.js API Routes (serverless)<br/>
+          Prisma ORM · PostgreSQL (Neon)<br/>
+          JWT sessions via jose<br/>
+          Google Gemini 2.0 Flash
+        </div>
+      </div>
+      <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">Infrastructure</div>
+        <div style="font-size: 13px; color: var(--ink-2); line-height: 1.8;">
+          Vercel (edge deployment)<br/>
+          Neon Serverless PostgreSQL<br/>
+          Zero DevOps overhead<br/>
+          Free tier covers MVP traffic
+        </div>
+      </div>
+      <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">Data</div>
+        <div style="font-size: 13px; color: var(--ink-2); line-height: 1.8;">
+          Local knowledge base (50+ schemes)<br/>
+          5 countries · 3 life events<br/>
+          AI-enriched descriptions<br/>
+          No external government APIs
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Competitive position ── -->
+  <div class="section">
+    <div class="section-label">Why Now · Why Us</div>
+    <h2>The opening no one has taken</h2>
+    <p class="section-sub">Every government is investing in AI. Only 4% of that investment reaches citizens. We are that 4%.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 8px;">
+      <div style="background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--eligible); border-radius: 10px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start;">
+        <span style="font-size: 22px;">🇮🇪</span>
+        <div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 3px;">Ireland's MyWelfare auto-award</div>
+          <div style="font-size: 12px; color: var(--ink-mute);">98% of treatment benefit claims now auto-awarded. We replicate the citizen-side of this for every country that hasn't built it yet.</div>
+        </div>
+      </div>
+      <div style="background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--eligible); border-radius: 10px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start;">
+        <span style="font-size: 22px;">🇦🇪</span>
+        <div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 3px;">Abu Dhabi's TAMM — 95% AI resolution rate</div>
+          <div style="font-size: 12px; color: var(--ink-mute);">36 million service centre visits eliminated per year. We bring this to citizens without requiring 30 years of infrastructure investment.</div>
+        </div>
+      </div>
+      <div style="background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--primary); border-radius: 10px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start;">
+        <span style="font-size: 22px;">🌍</span>
+        <div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 3px;">850M people lack official ID</div>
+          <div style="font-size: 12px; color: var(--ink-mute);">Our roadmap: verified identity layer for emerging markets. Estonia took 30 years. We are the shortcut every government without Estonia's infrastructure needs.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <div class="footer">
+    <div>
+      <div class="footer-logo">Modveon</div>
+      <div class="footer-note">Citizen Assist MVP · Built May 2026 · Confidential</div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 13px; font-weight: 600; color: var(--ink-2);">For questions about this brief</div>
+      <div class="footer-note">Share the live app URL from Vercel once deployed</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
