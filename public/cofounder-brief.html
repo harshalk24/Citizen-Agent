@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Citizen Assist by Modveon — Co-founder Brief</title>
+  <title>Citizen Assist by Modveon — MVP v1 Brief</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -196,7 +196,7 @@
 
   <!-- ── Header ── -->
   <div class="header">
-    <div class="badge">⚡ Internal Product Brief · MVP v1.0</div>
+    <div class="badge">⚡ MVP v1 · Shipped May 2026</div>
     <div class="logo">Modveon</div>
     <h1>Your government, <span>on your side</span></h1>
     <p class="tagline">
@@ -342,12 +342,12 @@
       <div class="step">
         <div class="step-num">1</div>
         <div>
-          <div class="step-title">Open the app & sign up</div>
+          <div class="step-title">Open the app & get started</div>
           <div class="step-detail">
-            Go to the app URL. Enter a phone number (any format works in MVP — no SMS verification in demo mode).
-            You land on the Dashboard with an empty state.
+            Go to the live URL. Click <strong>Get started</strong> — no phone, no email, no account needed.
+            You're taken straight into a short onboarding to tell the app your name and a bit about yourself.
           </div>
-          <span class="step-url">→ /auth</span>
+          <span class="step-url">→ /auth → /onboarding → /dashboard</span>
         </div>
       </div>
       <div class="step">
@@ -546,6 +546,72 @@
         <div class="rm-title">Multilingual access</div>
         <div class="rm-desc">Hindi, Arabic, Kinyarwanda. Unlocks excluded populations and emerging markets.</div>
       </div>
+      <div class="rm-card" style="border-left: 3px solid var(--primary); grid-column: 1 / -1;">
+        <div class="rm-tag" style="color: var(--primary);">★ North Star</div>
+        <div class="rm-title" style="font-size: 16px;">Proactive Agent — from tool to guardian</div>
+        <div class="rm-desc" style="font-size: 13px; margin-top: 4px;">
+          The agent watches for life event signals and reaches out to the citizen — not the other way around.
+          Push alerts, pre-filled applications, deadline nudges. The citizen never misses a benefit they qualify for.
+          This is the product vision we are building toward.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Vision ── -->
+  <div class="section">
+    <div class="section-label">Where We're Going</div>
+    <h2>From reactive tool → <span style="color: var(--primary)">proactive agent</span></h2>
+    <p class="section-sub">
+      The MVP proves the core: citizens find benefits they didn't know existed. The next evolution flips the model —
+      the agent reaches out to the citizen, not the other way around.
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px;">
+      <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px;">Today — Reactive MVP</div>
+        <div style="font-size: 13px; color: var(--ink-2); line-height: 1.9;">
+          ✓ Citizen opens the app<br/>
+          ✓ Citizen picks their life event<br/>
+          ✓ App surfaces benefits<br/>
+          ✓ Citizen generates a plan<br/>
+          ✓ Citizen tracks status manually
+        </div>
+      </div>
+      <div style="background: var(--paper); border: 1px solid rgba(106,166,216,0.25); border-left: 3px solid var(--primary); border-radius: 12px; padding: 22px 24px;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px;">Tomorrow — Proactive Agent</div>
+        <div style="font-size: 13px; color: var(--ink-2); line-height: 1.9;">
+          → Agent detects life events from signals<br/>
+          → Pushes "You may now qualify for X" alerts<br/>
+          → Prepares application drafts automatically<br/>
+          → Tracks deadlines and nudges citizen<br/>
+          → Closes the loop — "Your appeal is due"
+        </div>
+      </div>
+    </div>
+
+    <div style="background: rgba(106,166,216,0.06); border: 1px solid rgba(106,166,216,0.18); border-radius: 12px; padding: 22px 28px;">
+      <div style="font-size: 13px; color: var(--ink-mute); line-height: 1.8; margin-bottom: 12px;">
+        <strong style="color: var(--ink); font-size: 15px;">The proactive agent vision in one sentence:</strong>
+      </div>
+      <div style="font-size: 16px; font-weight: 600; color: var(--ink); line-height: 1.65; letter-spacing: -0.01em;">
+        "You shouldn't have to know a benefit exists to receive it — the agent should tell you the day you qualify,
+        prepare everything you need, and remind you until it's claimed."
+      </div>
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;">
+        <div style="font-size: 12px; color: var(--ink-mute); display: flex; gap: 10px; align-items: flex-start;">
+          <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">Signal 1</span>
+          <span>New baby registered → agent immediately queues Maternity Benefit, Child Benefit, Infant Formula Scheme without the parent asking.</span>
+        </div>
+        <div style="font-size: 12px; color: var(--ink-mute); display: flex; gap: 10px; align-items: flex-start;">
+          <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">Signal 2</span>
+          <span>Employment record shows termination → agent sends "You're likely eligible for Jobseeker's Benefit — here's your pre-filled application."</span>
+        </div>
+        <div style="font-size: 12px; color: var(--ink-mute); display: flex; gap: 10px; align-items: flex-start;">
+          <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">Signal 3</span>
+          <span>Annual renewal approaching → agent nudges 3 weeks before, not the day it lapses.</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -630,11 +696,11 @@
   <div class="footer">
     <div>
       <div class="footer-logo">Modveon</div>
-      <div class="footer-note">Citizen Assist MVP · Built May 2026 · Confidential</div>
+      <div class="footer-note">Citizen Assist MVP v1 · Shipped May 2026 · Confidential</div>
     </div>
     <div style="text-align: right;">
-      <div style="font-size: 13px; font-weight: 600; color: var(--ink-2);">For questions about this brief</div>
-      <div class="footer-note">Share the live app URL from Vercel once deployed</div>
+      <div style="font-size: 13px; font-weight: 600; color: var(--ink-2);">Live at</div>
+      <div class="footer-note">citizen-agent.vercel.app · Feedback drives v2</div>
     </div>
   </div>
 
