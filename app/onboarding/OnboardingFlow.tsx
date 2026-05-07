@@ -85,7 +85,7 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
       // Non-fatal — dashboard still loads
     }
 
-    setTimeout(() => router.push("/dashboard"), 1200);
+    setTimeout(() => { window.location.href = "/dashboard"; }, 1200);
   }
 
   // ── Completion screen ──────────────────────────────────────────────────────
