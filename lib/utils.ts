@@ -49,7 +49,7 @@ export function deadlineUrgency(deadline: string): "critical" | "warning" | "ok"
 export function countryFlag(country: string): string {
   const flags: Record<string, string> = {
     IE: "🇮🇪", UAE: "🇦🇪", AE: "🇦🇪", RW: "🇷🇼",
-    IN: "🇮🇳", "CA-US": "🇺🇸",
+    IN: "🇮🇳", "CA-US": "🇺🇸", SV: "🇸🇻",
   };
   return flags[country] ?? "🌍";
 }
@@ -57,7 +57,7 @@ export function countryFlag(country: string): string {
 export function countryName(code: string): string {
   const names: Record<string, string> = {
     IE: "Ireland", UAE: "UAE", AE: "UAE", RW: "Rwanda",
-    IN: "India", "CA-US": "California",
+    IN: "India", "CA-US": "California", SV: "El Salvador",
   };
   return names[code] ?? code;
 }

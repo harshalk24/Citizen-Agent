@@ -73,22 +73,20 @@ function AuthPageInner() {
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{
             fontSize: 26, fontWeight: 800, letterSpacing: "-0.04em",
-            background: "linear-gradient(135deg, #ffffff 0%, #6aa6d8 100%)",
-            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-            backgroundClip: "text", marginBottom: 6,
+            color: "var(--primary)", marginBottom: 6,
+            fontFamily: "var(--font-sans)",
           }}>
             Modveon
           </div>
-          <div style={{ fontSize: 12, color: "var(--ink-faint)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-faint)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
             Citizen Assist
           </div>
         </div>
 
         {/* Card */}
         <div style={{
-          background: "var(--paper)", border: "1px solid var(--line)",
-          borderRadius: 16, padding: "36px 28px",
-          boxShadow: "0 8px 40px rgba(0,0,0,0.3)",
+          background: "var(--paper)", border: "0.5px solid var(--line)",
+          borderRadius: 14, padding: "36px 28px",
         }}>
           <h1 style={{ fontSize: 24, fontWeight: 700, color: "var(--ink)", marginBottom: 10, letterSpacing: "-0.02em" }}>
             Find your benefits

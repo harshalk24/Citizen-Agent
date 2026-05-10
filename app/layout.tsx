@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Fraunces } from "next/font/google";
+import { Plus_Jakarta_Sans, DM_Serif_Display, DM_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 
-const interTight = Inter_Tight({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-inter-tight",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-sans",
   display: "swap",
 });
 
-const fraunces = Fraunces({
+const dmSerifDisplay = DM_Serif_Display({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400"],
   style: ["normal", "italic"],
-  variable: "--font-fraunces",
+  variable: "--font-display",
+  display: "swap",
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -30,8 +37,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${interTight.variable} ${fraunces.variable}`} style={{ background: "#0b0d10", color: "#f4f5f7" }}>
-      <body className="antialiased min-h-screen" style={{ fontFamily: "var(--font-sans)", background: "var(--bg, #0b0d10)", color: "var(--ink, #f4f5f7)" }}>
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} ${dmSerifDisplay.variable} ${dmMono.variable}`}
+      style={{ background: "#f5f4ef", color: "#0f1117" }}
+    >
+      <body
+        className="antialiased min-h-screen"
+        style={{ fontFamily: "var(--font-sans)", background: "var(--bg, #f5f4ef)", color: "var(--ink, #0f1117)" }}
+      >
         <NavBar />
         <main>{children}</main>
       </body>

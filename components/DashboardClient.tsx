@@ -203,8 +203,8 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <div style={{
                   width: 32, height: 32, borderRadius: 8,
-                  background: "rgba(106,166,216,0.15)",
-                  border: "1px solid rgba(106,166,216,0.3)",
+                  background: "rgba(26,92,58,0.12)",
+                  border: "1px solid rgba(26,92,58,0.25)",
                   display: "flex", alignItems: "center", justifyContent: "center",
                 }}>
                   <FileText size={15} color="var(--primary)" />
@@ -215,7 +215,7 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
                 {services.length > 0 && (
                   <span style={{
                     fontSize: 11, fontWeight: 700, color: "var(--primary)",
-                    background: "rgba(106,166,216,0.12)", border: "1px solid rgba(106,166,216,0.25)",
+                    background: "rgba(26,92,58,0.08)", border: "1px solid rgba(26,92,58,0.2)",
                     borderRadius: 999, padding: "2px 10px",
                   }}>
                     {services.length} found
@@ -258,8 +258,7 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
                     borderLeft: `3px solid ${PRIORITY_DOT[svc.priority] ?? "var(--line-strong)"}`,
                     borderRadius: 10, padding: "12px 14px",
                     display: "flex", alignItems: "center", gap: 12,
-                    boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
-                  }}>
+                              }}>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                         {svc.serviceName}
@@ -323,14 +322,14 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
                             fontSize: 11, fontWeight: 600,
                             color: "var(--primary)",
                             background: "var(--primary-soft)",
-                            border: "1px solid rgba(106,166,216,0.25)",
+                            border: "1px solid rgba(26,92,58,0.2)",
                             borderRadius: "var(--r-md)",
                             padding: "4px 8px",
                             textDecoration: "none",
                             transition: "background var(--dur-fast) var(--ease-out)",
                             whiteSpace: "nowrap",
                           }}
-                          onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(106,166,216,0.22)"; }}
+                          onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(26,92,58,0.18)"; }}
                           onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "var(--primary-soft)"; }}
                         >
                           <ExternalLink size={10} />
@@ -350,13 +349,13 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
                 <div style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   marginBottom: 14, paddingBottom: 12,
-                  borderBottom: "2px solid rgba(106,166,216,0.4)",
+                  borderBottom: "2px solid rgba(26,92,58,0.3)",
                 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <div style={{
                       width: 32, height: 32, borderRadius: 8,
-                      background: "rgba(106,166,216,0.15)",
-                      border: "1px solid rgba(106,166,216,0.3)",
+                      background: "rgba(26,92,58,0.12)",
+                      border: "1px solid rgba(26,92,58,0.25)",
                       display: "flex", alignItems: "center", justifyContent: "center",
                       fontSize: 16,
                     }}>
@@ -373,11 +372,10 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
                     <div key={svc.id} style={{
                       background: 'var(--paper)',
                       border: '1px solid var(--line)',
-                      borderLeft: '3px solid rgba(106,166,216,0.5)',
+                      borderLeft: '3px solid rgba(26,92,58,0.4)',
                       borderRadius: 10, padding: '12px 14px',
                       display: 'flex', alignItems: 'center', gap: 12,
-                      boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
-                    }}>
+                                  }}>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           {svc.name}
@@ -389,7 +387,7 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
                       )}
                       <span style={{
                         fontSize: 10, fontWeight: 600, color: 'var(--primary)',
-                        background: 'rgba(106,166,216,0.1)',
+                        background: 'rgba(26,92,58,0.07)',
                         border: '1px solid rgba(106,166,216,0.2)',
                         borderRadius: 4, padding: '2px 8px', flexShrink: 0
                       }}>
@@ -488,7 +486,7 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
             </div>
 
             {/* Chat CTA */}
-            <div style={{ background: "var(--primary-soft)", border: "1px solid rgba(106,166,216,0.22)", borderRadius: 12, padding: "18px 20px" }}>
+            <div style={{ background: "var(--primary-soft)", border: "1px solid rgba(26,92,58,0.18)", borderRadius: 12, padding: "18px 20px" }}>
               <h2 style={{ fontSize: 15, fontWeight: 600, color: "var(--ink)", marginBottom: 6 }}>Ask your agent</h2>
               <p style={{ fontSize: 13, color: "var(--ink-mute)", marginBottom: 14 }}>
                 Questions about any benefit, document, or deadline — answered instantly.

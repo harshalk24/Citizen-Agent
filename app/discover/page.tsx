@@ -126,7 +126,7 @@ function DiscoverPageInner() {
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
-            background: "rgba(106,166,216,0.1)", border: "1px solid rgba(106,166,216,0.2)",
+            background: "rgba(26,92,58,0.08)", border: "1px solid rgba(26,92,58,0.15)",
             borderRadius: 999, padding: "6px 16px", marginBottom: 20,
           }}>
             <Sparkles style={{ width: 13, height: 13, color: "var(--primary)" }} />
@@ -191,7 +191,7 @@ function DiscoverPageInner() {
                   background: "var(--primary)", color: "#fff",
                   padding: "10px 20px", borderRadius: 10,
                   fontSize: 13, fontWeight: 600, textDecoration: "none",
-                  boxShadow: "0 4px 16px rgba(106,166,216,0.3)",
+                  boxShadow: "0 4px 16px rgba(26,92,58,0.25)",
                   transition: "background var(--dur-fast)",
                   flexShrink: 0,
                 }}
@@ -214,7 +214,7 @@ function DiscoverPageInner() {
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                   <div style={{
                     width: 30, height: 30, borderRadius: "50%",
-                    background: "rgba(106,166,216,0.1)", border: "1px solid rgba(106,166,216,0.2)",
+                    background: "rgba(26,92,58,0.08)", border: "1px solid rgba(26,92,58,0.15)",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     flexShrink: 0,
                   }}>
@@ -245,7 +245,7 @@ function DiscoverPageInner() {
                 href="/chat/open"
                 style={{
                   flexShrink: 0, fontSize: 12, fontWeight: 600,
-                  color: "var(--primary)", border: "1px solid rgba(106,166,216,0.3)",
+                  color: "var(--primary)", border: "1px solid rgba(26,92,58,0.25)",
                   borderRadius: 8, padding: "8px 16px", textDecoration: "none",
                   transition: "background var(--dur-fast)",
                 }}

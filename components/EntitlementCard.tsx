@@ -158,7 +158,7 @@ export default function EntitlementCard({ service, index }: EntitlementCardProps
                 flex: 1, textAlign: "center",
                 fontSize: 12, fontWeight: 600,
                 color: "var(--primary)",
-                border: "1px solid rgba(106,166,216,0.3)",
+                border: "1px solid rgba(26,92,58,0.25)",
                 borderRadius: "var(--r-md)",
                 padding: "8px 12px",
                 textDecoration: "none",

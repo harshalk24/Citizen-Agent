@@ -21,10 +21,10 @@ export default function NavBar() {
       display: "flex",
       alignItems: "center",
       gap: 24,
-      background: "rgba(11,13,16,0.82)",
-      backdropFilter: "blur(10px)",
-      WebkitBackdropFilter: "blur(10px)",
-      borderBottom: "1px solid var(--line)",
+      background: "rgba(245,244,239,0.92)",
+      backdropFilter: "blur(12px)",
+      WebkitBackdropFilter: "blur(12px)",
+      borderBottom: "0.5px solid var(--line)",
       position: "sticky",
       top: 0,
       zIndex: 30,
@@ -35,14 +35,11 @@ export default function NavBar() {
         textDecoration: "none", background: "none", border: 0, cursor: "pointer",
       }}>
         <span style={{
-          fontSize: 20,
+          fontSize: 18,
           fontWeight: 800,
           letterSpacing: "-0.04em",
-          background: "linear-gradient(135deg, #ffffff 0%, #6aa6d8 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-          fontFamily: "inherit",
+          color: "var(--primary)",
+          fontFamily: "var(--font-sans)",
           userSelect: "none",
         }}>
           Modveon
@@ -50,19 +47,20 @@ export default function NavBar() {
       </Link>
 
       {/* Nav */}
-      <nav style={{ display: "flex", gap: 4, marginLeft: 12 }}>
+      <nav style={{ display: "flex", gap: 2, marginLeft: 8 }}>
         {navLinks.map(({ href, label }) => {
           const active = pathname === href || (href !== "/" && pathname.startsWith(href));
           return (
             <Link key={href} href={href} style={{
               background: active ? "var(--bg-alt)" : "transparent",
               color: active ? "var(--ink)" : "var(--ink-mute)",
-              border: 0,
+              border: "0.5px solid transparent",
+              borderColor: active ? "var(--line)" : "transparent",
               padding: "6px 12px",
               borderRadius: "var(--r-md)",
               fontFamily: "inherit",
-              fontSize: 13,
-              fontWeight: 500,
+              fontSize: 14,
+              fontWeight: active ? 600 : 500,
               cursor: "pointer",
               textDecoration: "none",
               transition: "all var(--dur-fast) var(--ease-out)",
@@ -80,19 +78,20 @@ export default function NavBar() {
         display: "inline-flex", alignItems: "center", gap: 8,
         padding: "5px 12px",
         background: "var(--paper)",
-        border: "1px solid var(--line)",
+        border: "0.5px solid var(--line)",
         borderRadius: "var(--r-pill)",
-        fontSize: 12, fontWeight: 500, color: "var(--ink-2)",
+        fontFamily: "var(--font-mono)",
+        fontSize: 11, fontWeight: 500, color: "var(--ink-2)",
       }}>
         <span className="verified-dot" />
         <span>Citizen Portal</span>
-        <span style={{ color: "var(--ink-faint)", fontWeight: 400 }}>· IE · UAE · RW · IN · CA</span>
+        <span style={{ color: "var(--ink-faint)", fontWeight: 400 }}>· IE · UAE · RW · IN · CA · SV</span>
       </div>
 
       {/* Chat icon */}
       <Link href="/chat/open" title="Ask AI" style={{
         width: 36, height: 36, borderRadius: "var(--r-md)",
-        border: "1px solid var(--line)",
+        border: "0.5px solid var(--line)",
         background: "var(--paper)",
         cursor: "pointer",
         display: "inline-flex", alignItems: "center", justifyContent: "center",

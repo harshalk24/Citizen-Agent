@@ -10,6 +10,7 @@ const COUNTRIES = [
   { id: "RW",    label: "Rwanda",        flag: "🇷🇼" },
   { id: "IN",    label: "India",         flag: "🇮🇳" },
   { id: "CA-US", label: "California",   flag: "🇺🇸" },
+  { id: "SV",    label: "El Salvador",   flag: "🇸🇻" },
   { id: "other", label: "Somewhere else", flag: "🌍" },
 ];
 
@@ -248,7 +249,7 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
                   }}
                   onFocus={(e) => {
                     e.currentTarget.style.borderColor = "var(--primary)";
-                    e.currentTarget.style.boxShadow   = "0 0 0 3px rgba(106,166,216,0.15)";
+                    e.currentTarget.style.boxShadow   = "0 0 0 3px rgba(26,92,58,0.12)";
                   }}
                   onBlur={(e)  => {
                     e.currentTarget.style.borderColor = "var(--line-strong)";
@@ -342,7 +343,7 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
                       background: "var(--paper)", border: "1px solid var(--primary)",
                       borderRadius: 12, outline: "none", fontFamily: "inherit",
                       boxSizing: "border-box",
-                      boxShadow: "0 0 0 3px rgba(106,166,216,0.15)",
+                      boxShadow: "0 0 0 3px rgba(26,92,58,0.12)",
                     }}
                   />
                 )}
@@ -393,7 +394,7 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
                     }}
                     onFocus={(e) => {
                       e.currentTarget.style.borderColor = "var(--primary)";
-                      e.currentTarget.style.boxShadow   = "0 0 0 3px rgba(106,166,216,0.15)";
+                      e.currentTarget.style.boxShadow   = "0 0 0 3px rgba(26,92,58,0.12)";
                     }}
                     onBlur={(e)  => {
                       e.currentTarget.style.borderColor = "var(--line-strong)";

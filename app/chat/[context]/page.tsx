@@ -76,8 +76,8 @@ function InlineSchemeCard({
 
   return (
     <div style={{
-      background:    isRecommended ? "rgba(106,166,216,0.08)" : "var(--bg-alt)",
-      border:        isRecommended ? "1.5px solid rgba(106,166,216,0.4)" : "1px solid var(--line)",
+      background:    isRecommended ? "rgba(26,92,58,0.06)" : "var(--bg-alt)",
+      border:        isRecommended ? "1.5px solid rgba(26,92,58,0.3)" : "1px solid var(--line)",
       borderRadius:  10,
       padding:       "11px 13px",
       marginBottom:  6,
@@ -286,7 +286,7 @@ function MessageBubble({
       <div style={{
         width: 30, height: 30, borderRadius: "50%",
         background: "var(--primary-soft)",
-        border: "1px solid rgba(106,166,216,0.3)",
+        border: "1px solid rgba(26,92,58,0.25)",
         display: "flex", alignItems: "center", justifyContent: "center",
         flexShrink: 0, marginTop: 2,
       }}>
@@ -335,7 +335,7 @@ function MessageBubble({
                   fontWeight:   600,
                   color:        "var(--primary)",
                   background:   "var(--primary-soft)",
-                  border:       "1px solid rgba(106,166,216,0.25)",
+                  border:       "1px solid rgba(26,92,58,0.2)",
                   borderRadius: 20,
                   padding:      "5px 12px",
                   cursor:       "pointer",
@@ -344,7 +344,7 @@ function MessageBubble({
                   whiteSpace:   "nowrap",
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLButtonElement).style.background = "rgba(106,166,216,0.2)";
+                  (e.currentTarget as HTMLButtonElement).style.background = "rgba(26,92,58,0.15)";
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLButtonElement).style.background = "var(--primary-soft)";
@@ -368,7 +368,7 @@ function TypingBubble() {
       <div style={{
         width: 30, height: 30, borderRadius: "50%",
         background: "var(--primary-soft)",
-        border: "1px solid rgba(106,166,216,0.3)",
+        border: "1px solid rgba(26,92,58,0.25)",
         display: "flex", alignItems: "center", justifyContent: "center",
         flexShrink: 0,
       }}>
@@ -621,7 +621,7 @@ export default function ChatPage({ params }: { params: { context: string } }) {
             <div style={{
               width: 36, height: 36, borderRadius: "50%",
               background: "var(--primary-soft)",
-              border: "1px solid rgba(106,166,216,0.3)",
+              border: "1px solid rgba(26,92,58,0.25)",
               display: "flex", alignItems: "center", justifyContent: "center",
             }}>
               <Shield size={16} color="var(--primary)" />
@@ -691,7 +691,7 @@ export default function ChatPage({ params }: { params: { context: string } }) {
                 transition: "border-color 0.15s",
                 opacity: streaming ? 0.5 : 1,
               }}
-              onFocus={e => { e.currentTarget.style.borderColor = "rgba(106,166,216,0.5)"; }}
+              onFocus={e => { e.currentTarget.style.borderColor = "rgba(26,92,58,0.4)"; }}
               onBlur={e  => { e.currentTarget.style.borderColor = "var(--line)"; }}
             />
             <button

@@ -190,7 +190,7 @@ export default function ApplyModal({ service, onClose }: ApplyModalProps) {
             <div style={{
               display: "flex", alignItems: "flex-start", gap: 8,
               background: "var(--info-bg)",
-              border: "1px solid rgba(106,166,216,0.2)",
+              border: "0.5px solid rgba(26,92,58,0.18)",
               borderRadius: "var(--r-md)",
               padding: "10px 12px",
               margin: "16px 0 4px",

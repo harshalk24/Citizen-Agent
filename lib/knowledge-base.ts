@@ -1,6 +1,6 @@
 export interface GovernmentService {
   id: string;
-  country: "IE" | "UAE" | "RW" | "IN" | "CA-US";
+  country: "IE" | "UAE" | "RW" | "IN" | "CA-US" | "SV";
   countryName: string;
   lifeEvents: ("new-baby" | "job-loss" | "start-business")[];
   employment: ("employed" | "self-employed" | "unemployed" | "any")[];
@@ -2030,13 +2030,243 @@ export const services: GovernmentService[] = [
     tags: ["business license", "city", "local permit"],
     weekToApply: 1,
   },
+
+  // ═══════════════════ EL SALVADOR — NEW BABY ═══════════════════════
+
+  {
+    id: "sv-maternity-leave-isss",
+    country: "SV",
+    countryName: "El Salvador",
+    lifeEvents: ["new-baby"],
+    employment: ["employed"],
+    category: "maternity",
+    name: "Maternity Leave — ISSS",
+    description:
+      "Employed women registered with the Salvadoran Social Security Institute (ISSS) are entitled to 12 weeks of paid maternity leave at 100% of their salary. Must have made contributions for at least 16 weeks in the previous year.",
+    amount: "100% salary for 12 weeks",
+    duration: "12 weeks",
+    agency: "Instituto Salvadoreño del Seguro Social (ISSS)",
+    agencyUrl: "https://www.isss.gob.sv/",
+    processingTime: "1–2 weeks",
+    documents: [
+      "DUI (National ID)",
+      "Certificate of pregnancy or birth from ISSS doctor",
+      "ISSS affiliation number",
+      "Employer contribution records",
+    ],
+    deadline: "Apply at least 1 month before due date",
+    priority: "high",
+    tags: ["maternity", "leave", "salary", "ISSS", "pregnant"],
+    weekToApply: 1,
+  },
+
+  {
+    id: "sv-maternal-health-minsal",
+    country: "SV",
+    countryName: "El Salvador",
+    lifeEvents: ["new-baby"],
+    employment: ["employed", "self-employed", "unemployed", "any"],
+    category: "healthcare",
+    name: "Free Maternal & Infant Healthcare (MINSAL)",
+    description:
+      "All pregnant women and newborns in El Salvador receive free prenatal care, hospital delivery, postnatal care, and infant vaccinations through the national public health network — regardless of employment or income status.",
+    agency: "Ministerio de Salud (MINSAL)",
+    agencyUrl: "https://www.salud.gob.sv/",
+    processingTime: "Immediate access",
+    documents: [
+      "DUI or birth certificate",
+      "No prior registration required — walk-in at any MINSAL unit",
+    ],
+    deadline: "Register at your nearest health unit as early as possible",
+    priority: "high",
+    tags: ["healthcare", "maternity", "infant", "free", "prenatal", "vaccination"],
+    weekToApply: 1,
+  },
+
+  {
+    id: "sv-child-benefit-pnbf",
+    country: "SV",
+    countryName: "El Salvador",
+    lifeEvents: ["new-baby"],
+    employment: ["unemployed", "any"],
+    category: "child benefit",
+    name: "Programa de Alimentación y Salud Escolar — Early Childhood",
+    description:
+      "El Salvador's social protection programmes provide nutrition and healthcare support for children under 5 from low-income households through community health promoters and MINSAL. Includes regular health check-ups, growth monitoring, and nutritional supplements.",
+    agency: "Ministerio de Salud / SEDESOL",
+    agencyUrl: "https://www.salud.gob.sv/",
+    processingTime: "Registration within 2 weeks",
+    documents: [
+      "Birth certificate of child",
+      "Parent's DUI",
+      "Proof of address",
+    ],
+    deadline: "Register within first 2 months of birth",
+    priority: "medium",
+    tags: ["child", "nutrition", "health", "social protection", "low-income"],
+    weekToApply: 2,
+  },
+
+  // ═══════════════════ EL SALVADOR — JOB LOSS ═══════════════════════
+
+  {
+    id: "sv-insaforp-training",
+    country: "SV",
+    countryName: "El Salvador",
+    lifeEvents: ["job-loss"],
+    employment: ["unemployed"],
+    category: "training",
+    name: "INSAFORP Free Vocational Training",
+    description:
+      "The Salvadoran Professional Training Institute (INSAFORP) offers free technical and vocational training programmes for unemployed workers. Courses range from IT, hospitality, and electrical engineering to beauty and tailoring — all designed to accelerate re-entry into employment.",
+    agency: "Instituto Salvadoreño de Formación Profesional (INSAFORP)",
+    agencyUrl: "https://www.insaforp.org.sv/",
+    processingTime: "Enrollment within 2–4 weeks of next course start",
+    documents: [
+      "DUI (National ID)",
+      "Proof of unemployment or termination letter",
+      "Education certificates (if required for chosen course)",
+    ],
+    deadline: "Courses run throughout the year — apply early for next intake",
+    priority: "high",
+    tags: ["training", "vocational", "free", "skills", "employment", "certificate"],
+    weekToApply: 1,
+  },
+
+  {
+    id: "sv-fovial-housing",
+    country: "SV",
+    countryName: "El Salvador",
+    lifeEvents: ["job-loss"],
+    employment: ["unemployed", "employed"],
+    category: "housing",
+    name: "FSV Housing Credit Support",
+    description:
+      "The Social Housing Fund (Fondo Social para la Vivienda) provides subsidised housing credit and renegotiation options for workers who have lost their jobs. If you have existing FSV contributions, you may qualify for a payment holiday or restructured loan during unemployment.",
+    agency: "Fondo Social para la Vivienda (FSV)",
+    agencyUrl: "https://www.fsv.gob.sv/",
+    processingTime: "4–8 weeks assessment",
+    documents: [
+      "DUI",
+      "Termination letter from employer",
+      "FSV account number",
+      "Bank account details",
+    ],
+    deadline: "Apply within 3 months of losing employment",
+    priority: "medium",
+    tags: ["housing", "credit", "mortgage", "unemployment", "FSV"],
+    weekToApply: 2,
+  },
+
+  {
+    id: "sv-mtps-mediation",
+    country: "SV",
+    countryName: "El Salvador",
+    lifeEvents: ["job-loss"],
+    employment: ["unemployed"],
+    category: "employment services",
+    name: "MTPS Employment Mediation & Severance Claims",
+    description:
+      "The Ministry of Labour (MTPS) provides free employment mediation services. If you were dismissed without cause, you may be entitled to statutory severance pay equivalent to 30 days per year worked (up to 1 year). MTPS mediators help you file and negotiate claims against your former employer.",
+    agency: "Ministerio de Trabajo y Previsión Social (MTPS)",
+    agencyUrl: "https://www.mtps.gob.sv/",
+    processingTime: "2–8 weeks for mediation",
+    documents: [
+      "DUI",
+      "Employment contract or appointment letter",
+      "Termination letter",
+      "Payslips (last 3 months)",
+    ],
+    deadline: "File within 30 days of dismissal for strongest legal position",
+    priority: "high",
+    tags: ["severance", "dismissal", "labour rights", "mediation", "compensation"],
+    weekToApply: 1,
+  },
+
+  // ═══════════════════ EL SALVADOR — STARTING A BUSINESS ═══════════════════════
+
+  {
+    id: "sv-conamype-support",
+    country: "SV",
+    countryName: "El Salvador",
+    lifeEvents: ["start-business"],
+    employment: ["self-employed", "unemployed"],
+    category: "business support",
+    name: "CONAMYPE — Micro & Small Enterprise Support",
+    description:
+      "The National Commission for Micro and Small Enterprises (CONAMYPE) provides free business development services: mentoring, market access, business formalisation support, and training. They also facilitate access to financing through the national development bank network.",
+    agency: "CONAMYPE",
+    agencyUrl: "https://www.conamype.gob.sv/",
+    processingTime: "First appointment within 1 week",
+    documents: [
+      "DUI",
+      "Business plan or concept outline",
+      "NIT (Tax ID) if already registered",
+    ],
+    deadline: "Register before starting commercial activity for full support",
+    priority: "high",
+    tags: ["startup", "micro-enterprise", "mentoring", "business plan", "CONAMYPE"],
+    weekToApply: 1,
+  },
+
+  {
+    id: "sv-bfa-credit",
+    country: "SV",
+    countryName: "El Salvador",
+    lifeEvents: ["start-business"],
+    employment: ["self-employed", "employed", "unemployed"],
+    category: "financing",
+    name: "BFA Development Credit",
+    description:
+      "The Banco de Fomento Agropecuario (BFA) offers low-interest development credit lines for new entrepreneurs, including those in agriculture, food production, crafts, and services. Loans from $500 to $50,000 USD available depending on project viability.",
+    amount: "Up to $50,000 USD",
+    agency: "Banco de Fomento Agropecuario (BFA)",
+    agencyUrl: "https://www.bfa.gob.sv/",
+    processingTime: "3–6 weeks for credit evaluation",
+    documents: [
+      "DUI and NIT",
+      "Business plan",
+      "Proof of address",
+      "Collateral documentation (if required)",
+    ],
+    deadline: "Applications accepted year-round",
+    priority: "medium",
+    tags: ["credit", "loan", "financing", "BFA", "development", "agriculture"],
+    weekToApply: 2,
+  },
+
+  {
+    id: "sv-cnr-registration",
+    country: "SV",
+    countryName: "El Salvador",
+    lifeEvents: ["start-business"],
+    employment: ["self-employed", "unemployed", "employed"],
+    category: "registration",
+    name: "Business Registration — CNR & MH",
+    description:
+      "Register your business legally in El Salvador through the National Registry Centre (CNR) for commercial registration and the Ministry of Finance (MH) for your NIT (tax ID). Simplified online registration available for sole traders and micro-enterprises. Required to issue invoices and access government programmes.",
+    amount: "$50–$200 registration fee",
+    agency: "Centro Nacional de Registros (CNR) / Ministerio de Hacienda",
+    agencyUrl: "https://www.cnr.gob.sv/",
+    processingTime: "3–10 business days",
+    documents: [
+      "DUI",
+      "Business name and activity description",
+      "Business address",
+      "Initial capital declaration",
+    ],
+    deadline: "Register before operating commercially",
+    priority: "high",
+    tags: ["registration", "legal", "NIT", "tax ID", "CNR", "formalisation"],
+    weekToApply: 1,
+  },
 ];
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
 export type LifeEvent = "new-baby" | "job-loss" | "start-business";
 export type Employment = "employed" | "self-employed" | "unemployed";
-export type Country = "IE" | "UAE" | "RW" | "IN" | "CA-US";
+export type Country = "IE" | "UAE" | "RW" | "IN" | "CA-US" | "SV";
 
 export function filterServices(
   lifeEvent: LifeEvent,
@@ -2063,7 +2293,7 @@ export function getAssumptions(
   employment: Employment,
   country: Country
 ): string[] {
-  const countryNames: Record<Country, string> = { IE: "Ireland", UAE: "UAE", RW: "Rwanda", IN: "India", "CA-US": "California" };
+  const countryNames: Record<Country, string> = { IE: "Ireland", UAE: "UAE", RW: "Rwanda", IN: "India", "CA-US": "California", SV: "El Salvador" };
   const employmentLabels: Record<Employment, string> = {
     employed: "Employed",
     "self-employed": "Self-employed",

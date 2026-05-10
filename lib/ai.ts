@@ -12,6 +12,7 @@ const COUNTRY_NAMES: Record<string, string> = {
   RW:    "Rwanda",
   IN:    "India",
   "CA-US": "California, USA",
+  SV:    "El Salvador",
 };
 
 // ── Streaming chat (returns an async iterable of text chunks) ─────────────────

@@ -18,12 +18,13 @@ const EMPLOYMENTS = [
 ];
 
 const COUNTRIES = [
-  { id: "IE",    label: "Ireland",    flag: "🇮🇪" },
-  { id: "UAE",   label: "UAE",        flag: "🇦🇪" },
-  { id: "RW",    label: "Rwanda",     flag: "🇷🇼" },
-  { id: "IN",    label: "India",      flag: "🇮🇳" },
-  { id: "CA-US", label: "California", flag: "🇺🇸" },
-  { id: "other", label: "Other",      flag: "🌍" },
+  { id: "IE",    label: "Ireland",     flag: "🇮🇪" },
+  { id: "UAE",   label: "UAE",         flag: "🇦🇪" },
+  { id: "RW",    label: "Rwanda",      flag: "🇷🇼" },
+  { id: "IN",    label: "India",       flag: "🇮🇳" },
+  { id: "CA-US", label: "California",  flag: "🇺🇸" },
+  { id: "SV",    label: "El Salvador", flag: "🇸🇻" },
+  { id: "other", label: "Other",       flag: "🌍" },
 ];
 
 interface SituationBuilderProps {
@@ -81,6 +82,8 @@ function parseSituationText(raw: string): ParseResult {
     country = "IN";
   } else if (/\bcalifornia\b|\bca\b|\blos angeles\b|\bsan francisco\b|\bsan diego\b|\bla\b/.test(t)) {
     country = "CA-US";
+  } else if (/\bel salvador\b|\bsalvador(an)?\b|\bsv\b|\bsan salvador\b|\bsanta ana el sal|\bsonsonate\b/.test(t)) {
+    country = "SV";
   }
 
   return { lifeEvent, employment, country };
@@ -203,7 +206,7 @@ export default function SituationBuilder({ onSubmit, loading, prefillCountry, pr
                 transition: "all var(--dur-fast) var(--ease-out)",
                 background: mode === m ? "var(--paper)" : "transparent",
                 color: mode === m ? "var(--ink)" : "var(--ink-mute)",
-                boxShadow: mode === m ? "0 1px 4px rgba(0,0,0,0.18)" : "none",
+                boxShadow: mode === m ? "0 1px 3px rgba(0,0,0,0.08)" : "none",
               }}
             >
               {m === "chips" ? "🎯 Quick select" : "✏️ Describe it"}
@@ -281,7 +284,7 @@ export default function SituationBuilder({ onSubmit, loading, prefillCountry, pr
             }}
             onFocus={(e) => {
               e.currentTarget.style.borderColor = "var(--primary)";
-              e.currentTarget.style.boxShadow = "0 0 0 3px rgba(106,166,216,0.15)";
+              e.currentTarget.style.boxShadow = "0 0 0 3px rgba(26,92,58,0.12)";
             }}
             onBlur={(e) => {
               e.currentTarget.style.borderColor = "var(--line-strong)";
@@ -306,7 +309,7 @@ export default function SituationBuilder({ onSubmit, loading, prefillCountry, pr
                     <span style={{
                       fontSize: 12, padding: "2px 10px",
                       background: "var(--primary-soft)", color: "var(--primary)",
-                      border: "1px solid rgba(106,166,216,0.3)",
+                      border: "1px solid rgba(26,92,58,0.25)",
                       borderRadius: "var(--r-pill)", fontWeight: 500,
                     }}>
                       {LIFE_EVENTS.find(e => e.id === clarify.lifeEvent)?.label ?? clarify.lifeEvent}
@@ -316,7 +319,7 @@ export default function SituationBuilder({ onSubmit, loading, prefillCountry, pr
                     <span style={{
                       fontSize: 12, padding: "2px 10px",
                       background: "var(--primary-soft)", color: "var(--primary)",
-                      border: "1px solid rgba(106,166,216,0.3)",
+                      border: "1px solid rgba(26,92,58,0.25)",
                       borderRadius: "var(--r-pill)", fontWeight: 500,
                     }}>
                       {EMPLOYMENTS.find(e => e.id === clarify.employment)?.label ?? clarify.employment}
@@ -326,7 +329,7 @@ export default function SituationBuilder({ onSubmit, loading, prefillCountry, pr
                     <span style={{
                       fontSize: 12, padding: "2px 10px",
                       background: "var(--primary-soft)", color: "var(--primary)",
-                      border: "1px solid rgba(106,166,216,0.3)",
+                      border: "1px solid rgba(26,92,58,0.25)",
                       borderRadius: "var(--r-pill)", fontWeight: 500,
                     }}>
                       {COUNTRIES.find(c => c.id === clarify.country)?.flag} {COUNTRIES.find(c => c.id === clarify.country)?.label ?? clarify.country}
@@ -540,8 +543,8 @@ export default function SituationBuilder({ onSubmit, loading, prefillCountry, pr
                   </div>
                   <span style={{
                     fontSize: 11, color: "var(--primary)",
-                    background: "rgba(106,166,216,0.1)",
-                    border: "1px solid rgba(106,166,216,0.2)",
+                    background: "rgba(26,92,58,0.08)",
+                    border: "1px solid rgba(26,92,58,0.18)",
                     borderRadius: "var(--r-pill)",
                     padding: "3px 12px",
                     fontWeight: 500,
@@ -560,8 +563,8 @@ export default function SituationBuilder({ onSubmit, loading, prefillCountry, pr
                   </div>
                   <span style={{
                     fontSize: 11, color: "var(--primary)",
-                    background: "rgba(106,166,216,0.1)",
-                    border: "1px solid rgba(106,166,216,0.2)",
+                    background: "rgba(26,92,58,0.08)",
+                    border: "1px solid rgba(26,92,58,0.18)",
                     borderRadius: "var(--r-pill)",
                     padding: "3px 12px",
                     fontWeight: 500,
