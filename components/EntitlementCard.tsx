@@ -20,11 +20,6 @@ const URGENCY_COLOR: Record<string, string> = {
   none:     "var(--ink-faint)",
 };
 
-const PRIORITY_BORDER: Record<string, string> = {
-  high:   "var(--ineligible)",
-  medium: "var(--partial)",
-  low:    "var(--primary)",
-};
 
 export default function EntitlementCard({ service, index }: EntitlementCardProps) {
   const [expanded, setExpanded] = useState(false);
@@ -36,81 +31,82 @@ export default function EntitlementCard({ service, index }: EntitlementCardProps
     <div
       style={{
         background: "var(--paper)",
-        border: "1px solid var(--line)",
-        borderLeft: `3px solid ${PRIORITY_BORDER[service.priority] ?? "var(--line)"}`,
-        borderRadius: "var(--r-xl)",
-        boxShadow: "var(--shadow-xs)",
+        border: "0.5px solid var(--line)",
+        borderRadius: "var(--r-lg)",
         cursor: "pointer",
         animation: "fadeInUp var(--dur-base) var(--ease-out) both",
         animationDelay: `${index * 60}ms`,
-        transition: "border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out)",
+        transition: "border-color var(--dur-base) var(--ease-out)",
       }}
+      onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(26,92,58,0.25)"; }}
+      onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = expanded ? "rgba(26,92,58,0.2)" : "var(--line)"; }}
       onClick={() => setExpanded((e) => !e)}
     >
-      <div style={{ padding: "14px 16px" }}>
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            {/* Week + deadline row */}
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-              <span className="pill" style={{ fontSize: 10, padding: "1px 8px" }}>
-                Week {service.weekToApply}
-              </span>
-              {service.deadline && (
-                <span style={{
-                  fontSize: 10, fontWeight: 500,
-                  color: URGENCY_COLOR[urgency] ?? "var(--ink-faint)",
-                }}>
-                  {service.deadline}
-                </span>
-              )}
-            </div>
-
-            <h3 style={{
-              fontSize: 13, fontWeight: 600,
-              color: "var(--ink)", lineHeight: 1.35, marginBottom: 2,
+      {/* Collapsed — name + amount + chevron only */}
+      <div style={{ padding: "14px 16px", display: "flex", alignItems: "center", gap: 12 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <h3 style={{
+            fontSize: 14, fontWeight: 600,
+            color: "var(--ink)", lineHeight: 1.3, margin: 0,
+          }}>
+            {service.name}
+          </h3>
+          {!expanded && service.description && (
+            <p style={{
+              fontSize: 12, color: "var(--ink-mute)", marginTop: 3,
+              overflow: "hidden", display: "-webkit-box",
+              WebkitLineClamp: 1, WebkitBoxOrient: "vertical",
+              lineHeight: 1.5,
             }}>
-              {service.name}
-            </h3>
-            <p style={{ fontSize: 11, color: "var(--ink-mute)" }}>{service.agency}</p>
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8, flexShrink: 0 }}>
-            {service.amount && (
-              <span style={{
-                fontSize: 13, fontWeight: 700,
-                color: "var(--primary)", whiteSpace: "nowrap",
-              }}>
-                {service.amount}
-              </span>
-            )}
-            <span style={{ color: "var(--ink-faint)" }}>
-              {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-            </span>
-          </div>
+              {service.description}
+            </p>
+          )}
         </div>
 
-        {!expanded && (
-          <p style={{
-            fontSize: 11, color: "var(--ink-mute)", marginTop: 8,
-            overflow: "hidden", display: "-webkit-box",
-            WebkitLineClamp: 1, WebkitBoxOrient: "vertical",
-          }}>
-            {service.description}
-          </p>
-        )}
+        <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
+          {service.amount && (
+            <span style={{
+              fontSize: 15, fontWeight: 700,
+              color: "var(--primary)", whiteSpace: "nowrap",
+            }}>
+              {service.amount}
+            </span>
+          )}
+          <span style={{ color: "var(--ink-faint)" }}>
+            {expanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+          </span>
+        </div>
       </div>
 
       {/* Expanded */}
       {expanded && (
         <div
           style={{
-            borderTop: "1px solid var(--line)",
+            borderTop: "0.5px solid var(--line)",
             padding: "14px 16px 16px",
             display: "flex", flexDirection: "column", gap: 12,
           }}
           onClick={(e) => e.stopPropagation()}
         >
-          <p style={{ fontSize: 12, color: "var(--ink-mute)", lineHeight: 1.6 }}>
+          {/* Agency + priority badge — shown only when expanded */}
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ fontSize: 12, color: "var(--ink-mute)" }}>{service.agency}</span>
+            <span style={{
+              fontFamily: "var(--font-mono)", fontSize: 10, fontWeight: 700,
+              padding: "1px 7px", borderRadius: 4,
+              background: service.priority === "high" ? "rgba(185,28,28,0.08)"
+                        : service.priority === "medium" ? "rgba(133,79,11,0.08)"
+                        : "rgba(26,92,58,0.08)",
+              color: service.priority === "high" ? "var(--ineligible)"
+                   : service.priority === "medium" ? "var(--partial)"
+                   : "var(--primary)",
+              textTransform: "uppercase", letterSpacing: "0.06em",
+            }}>
+              {service.priority} priority
+            </span>
+          </div>
+
+          <p style={{ fontSize: 13, color: "var(--ink-2)", lineHeight: 1.65 }}>
             {service.description}
           </p>
 

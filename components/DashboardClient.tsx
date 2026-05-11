@@ -144,50 +144,56 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
           </div>
           <div style={{ display: "flex", gap: 10 }}>
             <Link href="/update-situation" className="btn btn-outline btn-sm" style={{ borderRadius: 6 }}>
-              <Compass size={13} /> Update situation
+              <Compass size={13} /> Update my details
             </Link>
             <Link href="/chat/open" className="btn btn-primary btn-sm" style={{ borderRadius: 6 }}>
-              <MessageCircle size={13} /> Ask agent
+              <MessageCircle size={13} /> Ask a question
             </Link>
           </div>
         </div>
 
-        {/* Empty state — get started prompt (full width, above grid) */}
+        {/* Empty state */}
         {!hasProfile && (
           <div style={{
-            background: "var(--paper)", border: "1px solid var(--line)",
-            borderRadius: 16, padding: "48px 32px", textAlign: "center", marginBottom: 28,
+            background: "var(--paper)", border: "0.5px solid var(--line)",
+            borderRadius: 14, padding: "48px 32px", textAlign: "center", marginBottom: 28,
           }}>
-            <div className="eyebrow" style={{ marginBottom: 12 }}>Get started</div>
-            <h2 style={{ fontSize: 20, fontWeight: 600, color: "var(--ink)", marginBottom: 8 }}>
-              Tell your agent your situation
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--ink-mute)", marginBottom: 12 }}>Get started</p>
+            <h2 style={{ fontSize: 22, fontWeight: 600, color: "var(--ink)", marginBottom: 10, letterSpacing: "-0.02em" }}>
+              What&apos;s happening in your life?
             </h2>
-            <p style={{ fontSize: 14, color: "var(--ink-mute)", marginBottom: 24, maxWidth: 440, margin: "0 auto 24px" }}>
-              Three taps and your agent maps every government benefit you qualify for — with a week-by-week plan to claim them.
+            <p style={{ fontSize: 14, color: "var(--ink-mute)", lineHeight: 1.65, maxWidth: 400, margin: "0 auto 28px" }}>
+              Three taps and we show every benefit you qualify for — with a plan to claim them.
             </p>
-            <Link href="/discover" className="btn btn-primary" style={{ borderRadius: 8 }}>
-              Build my situation <ArrowRight size={14} />
+            <Link href="/discover" className="btn btn-primary" style={{ borderRadius: 8, height: 44, fontSize: 14 }}>
+              Find my benefits <ArrowRight size={14} />
             </Link>
           </div>
         )}
 
-        {/* Stats */}
-        {hasProfile && (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 28 }}>
-            {[
-              { label: "Services found", value: totalServices, color: "var(--primary)" },
-              { label: "Not started",    value: notStarted,    color: "var(--ink-mute)" },
-              { label: "In progress",    value: inProgress,    color: "var(--partial)" },
-              { label: "Completed",      value: completed,     color: "var(--eligible)" },
-            ].map((s) => (
-              <div key={s.label} style={{
-                background: "var(--paper)", border: "1px solid var(--line)",
-                borderRadius: 12, padding: "18px 20px",
-              }}>
-                <div style={{ fontSize: 28, fontWeight: 600, color: s.color, letterSpacing: "-0.03em" }}>{s.value}</div>
-                <div className="eyebrow" style={{ marginTop: 4 }}>{s.label}</div>
-              </div>
-            ))}
+        {/* Summary sentence — replaces stats grid */}
+        {hasProfile && totalServices > 0 && (
+          <div style={{ marginBottom: 24 }}>
+            <p style={{ fontSize: 17, fontWeight: 500, color: "var(--ink)", lineHeight: 1.5 }}>
+              You have{" "}
+              <span style={{ fontWeight: 700, color: "var(--primary)" }}>{totalServices} benefit{totalServices !== 1 ? "s" : ""}</span>
+              {" "}to claim
+              {completed > 0 && (
+                <span style={{ color: "var(--ink-mute)", fontWeight: 400 }}>
+                  {" "}· {completed} done
+                </span>
+              )}
+              {notStarted > 0 && (
+                <span style={{ color: "var(--ink-mute)", fontWeight: 400 }}>
+                  {" "}· {notStarted} to start
+                </span>
+              )}
+              {inProgress > 0 && (
+                <span style={{ color: "var(--partial)", fontWeight: 400 }}>
+                  {" "}· {inProgress} in progress
+                </span>
+              )}
+            </p>
           </div>
         )}
 
@@ -210,7 +216,7 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
                   <FileText size={15} color="var(--primary)" />
                 </div>
                 <h2 style={{ fontSize: 18, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.01em" }}>
-                  Your Entitlements
+                  What you can claim
                 </h2>
                 {services.length > 0 && (
                   <span style={{

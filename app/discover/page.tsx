@@ -96,7 +96,18 @@ function DiscoverPageInner() {
       }, {})
     : {};
 
-  const weekLabel: Record<number, string> = { 1: "This week", 2: "Week 2", 4: "Month 1", 12: "Month 3" };
+  const weekLabel: Record<number, string> = {
+    1:  "Do this first",
+    2:  "Do this soon",
+    4:  "This month",
+    12: "When you're ready",
+  };
+  const weekColor: Record<number, string> = {
+    1:  "var(--ineligible)",
+    2:  "var(--partial)",
+    4:  "var(--primary)",
+    12: "var(--ink-mute)",
+  };
 
   return (
     <main className="min-h-screen dot-grid pt-24 pb-16">
@@ -145,11 +156,10 @@ function DiscoverPageInner() {
         {/* Situation builder — no current-situation banner */}
         <div style={{
           background: "var(--paper)",
-          border: "1px solid var(--line)",
-          borderRadius: 16,
+          border: "0.5px solid var(--line)",
+          borderRadius: 14,
           padding: "28px 28px 24px",
           marginBottom: 32,
-          boxShadow: "0 4px 32px rgba(0,0,0,0.18)",
         }}>
           <SituationBuilder
             onSubmit={handleSubmit}
@@ -208,21 +218,29 @@ function DiscoverPageInner() {
               onRefine={handleRefine}
             />
 
-            {/* Services by week */}
+            {/* Services by urgency */}
             {Object.entries(byWeek).map(([week, services]) => (
               <div key={week}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                  <div style={{
-                    width: 30, height: 30, borderRadius: "50%",
-                    background: "rgba(26,92,58,0.08)", border: "1px solid rgba(26,92,58,0.15)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
+                  <span style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 11, fontWeight: 700,
+                    color: weekColor[Number(week)] ?? "var(--ink-mute)",
+                    background: "var(--paper)",
+                    border: `0.5px solid ${weekColor[Number(week)] ?? "var(--line)"}`,
+                    borderRadius: 4,
+                    padding: "2px 8px",
+                    whiteSpace: "nowrap",
                     flexShrink: 0,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
                   }}>
-                    <span style={{ color: "var(--primary)", fontSize: 11, fontWeight: 700 }}>{week}</span>
-                  </div>
-                  <h3 style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)" }}>{weekLabel[Number(week)]}</h3>
-                  <div style={{ flex: 1, height: 1, background: "var(--line)" }} />
-                  <span style={{ fontSize: 11, color: "var(--ink-mute)" }}>{services.length} benefit{services.length !== 1 ? "s" : ""}</span>
+                    {weekLabel[Number(week)]}
+                  </span>
+                  <div style={{ flex: 1, height: "0.5px", background: "var(--line)" }} />
+                  <span style={{ fontSize: 11, color: "var(--ink-faint)", fontFamily: "var(--font-mono)" }}>
+                    {services.length} benefit{services.length !== 1 ? "s" : ""}
+                  </span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   {services.map((svc, i) => (

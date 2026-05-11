@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldCheck, Lock, ChevronLeft, ArrowRight, Check } from "lucide-react";
+import { ShieldCheck, ChevronLeft, ArrowRight, Check } from "lucide-react";
 
 const COUNTRIES = [
   { id: "IE",    label: "Ireland",       flag: "🇮🇪" },
@@ -14,7 +14,6 @@ const COUNTRIES = [
   { id: "other", label: "Somewhere else", flag: "🌍" },
 ];
 
-const GENDERS = ["Woman", "Man", "Non-binary", "Prefer not to say"];
 
 // Slide direction variants
 const slide = {
@@ -23,9 +22,6 @@ const slide = {
   exit:   (dir: number) => ({ opacity: 0, x: dir * -56 }),
 };
 
-function isValidEmail(e: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
-}
 
 interface Props {
   citizenId: string;
@@ -38,24 +34,16 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
   const [dir,  setDir]    = useState(1);   // 1=forward, -1=back
   const [done, setDone]   = useState(false);
 
-  const [firstName, setFirstName]       = useState("");
-  const [country, setCountry]           = useState(prefillCountry);
+  const [firstName, setFirstName]         = useState("");
+  const [country, setCountry]             = useState(prefillCountry);
   const [customCountry, setCustomCountry] = useState("");
-  const [email, setEmail]               = useState("");
 
-  const nameRef  = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
 
-  // Auto-focus text inputs when screen appears
+  // Auto-focus name input when screen 1 appears
   useEffect(() => {
-    if (step === 1) setTimeout(() => nameRef.current?.focus(),  300);
-    if (step === 3) setTimeout(() => emailRef.current?.focus(), 300);
+    if (step === 1) setTimeout(() => nameRef.current?.focus(), 300);
   }, [step]);
-
-  function advance() {
-    setDir(1);
-    setStep((s) => s + 1);
-  }
 
   function goBack() {
     if (step <= 1) return;
@@ -63,7 +51,7 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
     setStep((s) => s - 1);
   }
 
-  async function finish(selectedGender: string) {
+  async function finish() {
     setDone(true);
 
     const finalCountry = country === "other" ? customCountry : country;
@@ -74,10 +62,8 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           citizenId,
-          ...(firstName.trim()        && { firstName: firstName.trim() }),
-          ...(finalCountry            && { country: finalCountry }),
-          ...(email.trim()            && { email: email.trim() }),
-          ...(selectedGender          && { gender: selectedGender }),
+          ...(firstName.trim() && { firstName: firstName.trim() }),
+          ...(finalCountry     && { country: finalCountry }),
         }),
       });
     } catch {
@@ -138,8 +124,8 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
       padding: "48px 24px",
       overflow: "hidden",
     }}>
-      {/* Back arrow — screens 2, 3, 4 only */}
-      {step >= 2 && step <= 4 && !done && (
+      {/* Back arrow — screen 2 only */}
+      {step === 2 && !done && (
         <button
           onClick={goBack}
           style={{
@@ -157,13 +143,13 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
         </button>
       )}
 
-      {/* Progress dots — screens 1–4 */}
-      {step >= 1 && step <= 4 && (
+      {/* Progress dots — screens 1–2 */}
+      {step >= 1 && step <= 2 && (
         <div style={{
           display: "flex", justifyContent: "center", gap: 8,
           marginBottom: 56,
         }}>
-          {[1, 2, 3, 4].map((dot) => (
+          {[1, 2].map((dot) => (
             <motion.div
               key={dot}
               animate={{
@@ -350,7 +336,7 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
 
                 {country && (
                   <button
-                    onClick={advance}
+                    onClick={finish}
                     style={{
                       height: 48, borderRadius: 12, border: "none", cursor: "pointer",
                       background: "var(--primary)", color: "var(--on-primary)",
@@ -358,135 +344,9 @@ export default function OnboardingFlow({ citizenId, prefillCountry }: Props) {
                       display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                     }}
                   >
-                    {country === prefillCountry ? "That’s right →" : "Confirm →"}
+                    {country === prefillCountry ? "That’s right, let’s go →" : "Show my benefits →"}
                   </button>
                 )}
-              </div>
-            )}
-
-            {/* ════════════════ SCREEN 3 — EMAIL ════════════════ */}
-            {step === 3 && (
-              <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-                <div>
-                  <h1 style={{ fontSize: 28, fontWeight: 500, color: "var(--ink)", margin: "0 0 8px", letterSpacing: "-0.02em" }}>
-                    Want deadline reminders by email?
-                  </h1>
-                  <p style={{ fontSize: 14, color: "var(--ink-mute)", margin: 0, lineHeight: 1.55 }}>
-                    We&apos;ll only send you deadline alerts — nothing else. Ever.
-                  </p>
-                </div>
-
-                <div>
-                  <input
-                    ref={emailRef}
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    onKeyDown={(e) => { if (e.key === "Enter" && isValidEmail(email)) advance(); }}
-                    placeholder="your@email.com"
-                    style={{
-                      width: "100%", height: 52, padding: "0 16px",
-                      fontSize: 16, color: "var(--ink)",
-                      background: "var(--paper)", border: "1px solid var(--line-strong)",
-                      borderRadius: 12, outline: "none", fontFamily: "inherit",
-                      transition: "border-color var(--dur-fast), box-shadow var(--dur-fast)",
-                      boxSizing: "border-box",
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.borderColor = "var(--primary)";
-                      e.currentTarget.style.boxShadow   = "0 0 0 3px rgba(26,92,58,0.12)";
-                    }}
-                    onBlur={(e)  => {
-                      e.currentTarget.style.borderColor = "var(--line-strong)";
-                      e.currentTarget.style.boxShadow   = "none";
-                    }}
-                  />
-                  <div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 8 }}>
-                    <Lock size={11} color="var(--ink-faint)" />
-                    <span style={{ fontSize: 12, color: "var(--ink-faint)" }}>
-                      No marketing. Unsubscribe anytime.
-                    </span>
-                  </div>
-                </div>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                  <button
-                    onClick={advance}
-                    disabled={!isValidEmail(email)}
-                    style={{
-                      height: 48, borderRadius: 12, border: "none",
-                      cursor: isValidEmail(email) ? "pointer" : "not-allowed",
-                      background: isValidEmail(email) ? "var(--primary)" : "var(--line-strong)",
-                      color: "var(--on-primary)",
-                      fontSize: 15, fontWeight: 600, fontFamily: "inherit",
-                      display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-                      opacity: isValidEmail(email) ? 1 : 0.5,
-                      transition: "all var(--dur-fast)",
-                    }}
-                  >
-                    Send me reminders →
-                  </button>
-                  <button
-                    onClick={() => { setEmail(""); advance(); }}
-                    style={{
-                      height: 48, borderRadius: 12,
-                      background: "none", border: "1px solid var(--line-strong)",
-                      color: "var(--ink-mute)", fontSize: 14, fontWeight: 500,
-                      cursor: "pointer", fontFamily: "inherit",
-                      transition: "border-color var(--dur-fast)",
-                    }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--ink-mute)"; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--line-strong)"; }}
-                  >
-                    Skip — I&apos;ll check the app
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* ════════════════ SCREEN 4 — GENDER ════════════════ */}
-            {step === 4 && (
-              <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                <div>
-                  <h1 style={{ fontSize: 28, fontWeight: 500, color: "var(--ink)", margin: "0 0 8px", letterSpacing: "-0.02em" }}>
-                    Any gender-specific benefits?
-                  </h1>
-                  <p style={{ fontSize: 14, color: "var(--ink-mute)", margin: 0, lineHeight: 1.55 }}>
-                    Some benefits like maternity pay, paternity leave, and carer&apos;s support depend on this. We won&apos;t use it for anything else.
-                  </p>
-                </div>
-
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-                  {GENDERS.map((g) => (
-                    <button
-                      key={g}
-                      onClick={() => finish(g)}
-                      style={{
-                        padding: "20px 12px",
-                        borderRadius: 12,
-                        border: "1px solid var(--line)",
-                        background: "var(--paper)",
-                        color: "var(--ink)",
-                        fontSize: 15, fontWeight: 500,
-                        cursor: "pointer", fontFamily: "inherit",
-                        textAlign: "center",
-                        minHeight: 68,
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        transition: "all var(--dur-fast) var(--ease-out)",
-                      }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--primary)";
-                        (e.currentTarget as HTMLButtonElement).style.background  = "var(--primary-soft)";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--line)";
-                        (e.currentTarget as HTMLButtonElement).style.background  = "var(--paper)";
-                      }}
-                    >
-                      {g}
-                    </button>
-                  ))}
-                </div>
               </div>
             )}
 

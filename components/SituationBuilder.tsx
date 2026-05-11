@@ -183,55 +183,23 @@ export default function SituationBuilder({ onSubmit, loading, prefillCountry, pr
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
 
-      {/* Mode toggle — centred */}
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
-        <div style={{
-          display: "inline-flex",
-          background: "var(--bg-alt)",
-          border: "1px solid var(--line)",
-          borderRadius: "var(--r-pill)",
-          padding: 4,
-          gap: 3,
-        }}>
-          {(["chips", "text"] as const).map((m) => (
-            <button
-              key={m}
-              onClick={() => { setMode(m); setParseHint(null); setClarify(null); }}
-              style={{
-                fontSize: 13, fontWeight: 700,
-                padding: "8px 22px",
-                borderRadius: "var(--r-pill)",
-                border: "none", cursor: "pointer",
-                fontFamily: "inherit",
-                transition: "all var(--dur-fast) var(--ease-out)",
-                background: mode === m ? "var(--paper)" : "transparent",
-                color: mode === m ? "var(--ink)" : "var(--ink-mute)",
-                boxShadow: mode === m ? "0 1px 3px rgba(0,0,0,0.08)" : "none",
-              }}
-            >
-              {m === "chips" ? "🎯 Quick select" : "✏️ Describe it"}
-            </button>
-          ))}
-        </div>
-
-        {/* Reset — shown when something is selected */}
-        {(lifeEvent || employment || country || textInput) && (
-          <button
-            onClick={resetAll}
-            style={{
-              background: "none", border: "none", cursor: "pointer",
-              color: "var(--ink-faint)", fontSize: 12,
-              display: "flex", alignItems: "center", gap: 4,
-              fontFamily: "inherit",
-              transition: "color var(--dur-fast)",
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "var(--ink-mute)"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "var(--ink-faint)"; }}
-          >
-            <RotateCcw size={12} /> Reset
-          </button>
-        )}
-      </div>
+      {/* In text mode — back link at top */}
+      {mode === "text" && (
+        <button
+          onClick={() => { setMode("chips"); setParseHint(null); setClarify(null); }}
+          style={{
+            alignSelf: "flex-start", background: "none", border: "none",
+            cursor: "pointer", color: "var(--ink-mute)", fontSize: 13,
+            display: "flex", alignItems: "center", gap: 5,
+            fontFamily: "inherit", padding: 0,
+            transition: "color var(--dur-fast)",
+          }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "var(--ink)"; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "var(--ink-mute)"; }}
+        >
+          ← Back to quick select
+        </button>
+      )}
 
       {/* Parse hint (shared between modes) */}
       {parseHint && (
@@ -624,6 +592,41 @@ export default function SituationBuilder({ onSubmit, loading, prefillCountry, pr
                 <span className="typing-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--primary)", display: "inline-block" }} />
               </div>
               Finding your entitlements in {countryFlag(country ?? "")} {countryName(country ?? "")}…
+            </div>
+          )}
+
+          {/* Escape hatch + reset row */}
+          {!loading && (
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 4 }}>
+              <button
+                onClick={() => { setMode("text"); setParseHint(null); setClarify(null); }}
+                style={{
+                  background: "none", border: "none", cursor: "pointer",
+                  color: "var(--ink-faint)", fontSize: 12,
+                  fontFamily: "inherit", padding: 0,
+                  transition: "color var(--dur-fast)",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "var(--primary)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "var(--ink-faint)"; }}
+              >
+                ✏️ Describe my situation instead
+              </button>
+              {(lifeEvent || employment || country) && (
+                <button
+                  onClick={resetAll}
+                  style={{
+                    background: "none", border: "none", cursor: "pointer",
+                    color: "var(--ink-faint)", fontSize: 12,
+                    display: "flex", alignItems: "center", gap: 4,
+                    fontFamily: "inherit",
+                    transition: "color var(--dur-fast)",
+                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "var(--ink-mute)"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "var(--ink-faint)"; }}
+                >
+                  <RotateCcw size={11} /> Reset
+                </button>
+              )}
             </div>
           )}
         </div>
