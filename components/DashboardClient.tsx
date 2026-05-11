@@ -222,12 +222,16 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
           <div>
 
             {/* Section label */}
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-              <span style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.01em" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+              <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em", margin: 0, whiteSpace: "nowrap" }}>
                 What you can claim
-              </span>
+              </h2>
               {services.length > 0 && (
-                <span style={{ fontSize: 11, color: "var(--ink-mute)", fontFamily: "var(--font-mono)" }}>
+                <span style={{
+                  fontSize: 11, fontWeight: 600, color: "var(--primary)",
+                  background: "rgba(26,92,58,0.08)", border: "1px solid rgba(26,92,58,0.18)",
+                  borderRadius: 999, padding: "1px 9px", fontFamily: "var(--font-mono)",
+                }}>
                   {services.length}
                 </span>
               )}
@@ -236,11 +240,11 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
                 <Link
                   href="/discover"
                   style={{
-                    fontSize: 11, color: "var(--primary)", textDecoration: "none",
-                    fontWeight: 500, flexShrink: 0, display: "flex", alignItems: "center", gap: 3,
+                    fontSize: 12, color: "var(--primary)", textDecoration: "none",
+                    fontWeight: 600, flexShrink: 0, display: "flex", alignItems: "center", gap: 4,
                   }}
                 >
-                  <FileText size={11} /> Refresh
+                  <FileText size={12} /> Refresh
                 </Link>
               )}
             </div>
@@ -352,12 +356,12 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
             {/* What's New ── only shown when location services exist */}
             {locationServices.length > 0 && (
               <div style={{ marginTop: 24 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.01em" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                  <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em", margin: 0, whiteSpace: "nowrap" }}>
                     {countryFlag(citizen.country)} New in {countryName(citizen.country)}
-                  </span>
+                  </h2>
                   <div style={{ flex: 1, height: "0.5px", background: "var(--line)" }} />
-                  <span style={{ fontSize: 11, color: "var(--ink-mute)", flexShrink: 0 }}>Recently added</span>
+                  <span style={{ fontSize: 11, color: "var(--ink-mute)", flexShrink: 0, fontFamily: "var(--font-mono)" }}>Recently added</span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                   {locationServices.map((svc) => (
@@ -390,8 +394,8 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
 
             {/* Deadlines */}
             <div style={{ background: "var(--paper)", border: "0.5px solid var(--line)", borderRadius: 12, padding: "16px 18px" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-                <span style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)" }}>Upcoming deadlines</span>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+                <h2 style={{ fontSize: 15, fontWeight: 700, color: "var(--ink)", margin: 0, letterSpacing: "-0.01em" }}>Upcoming deadlines</h2>
                 {urgentCount > 0 && (
                   <span style={{
                     fontSize: 10, fontWeight: 600, color: "var(--ineligible)",
@@ -444,7 +448,7 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
 
             {/* Action plan */}
             <div style={{ background: "var(--paper)", border: "0.5px solid var(--line)", borderRadius: 12, padding: "16px 18px" }}>
-              <span style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)", display: "block", marginBottom: 8 }}>Action plan</span>
+              <h2 style={{ fontSize: 15, fontWeight: 700, color: "var(--ink)", margin: "0 0 10px", letterSpacing: "-0.01em" }}>Action plan</h2>
               {actionPlan ? (
                 <>
                   <p style={{ fontSize: 13, color: "var(--ink-mute)", marginBottom: 12, lineHeight: 1.55 }}>

@@ -5,157 +5,246 @@ import { CheckCircle, Clock, FileText, ExternalLink, MessageSquare } from "lucid
 import { applyEnrichment } from "@/lib/apply-enrichment";
 
 interface ActionItem {
-  serviceId: string;
+  serviceId:   string;
   serviceName: string;
-  agency: string;
-  action: string;
+  agency:      string;
+  action:      string;
   weekToApply: 1 | 2 | 4 | 12;
-  amount?: string;
-  deadline: string;
-  documents: string[];
-  tips: string[];
+  amount?:     string;
+  deadline:    string;
+  documents:   string[];
+  tips:        string[];
 }
 
 interface ActionPlanTimelineProps {
-  items: ActionItem[];
-  summary?: string;
+  items:               ActionItem[];
+  summary?:            string;
   totalEstimatedValue?: string;
 }
 
-const COLUMNS: { week: 1 | 2 | 4 | 12; label: string; sublabel: string }[] = [
-  { week: 1, label: "This Week",  sublabel: "Do immediately" },
-  { week: 2, label: "Week 2",     sublabel: "Next priority" },
-  { week: 4, label: "Month 1",    sublabel: "Within 4 weeks" },
-  { week: 12, label: "Month 3",   sublabel: "Within 3 months" },
+const COLUMNS: { week: 1 | 2 | 4 | 12; label: string; sublabel: string; color: string; bg: string }[] = [
+  { week: 1,  label: "Do immediately", sublabel: "Start right away",   color: "var(--ineligible)", bg: "rgba(185,28,28,0.06)" },
+  { week: 2,  label: "Next priority",  sublabel: "Within 2 weeks",     color: "var(--partial)",    bg: "rgba(214,163,90,0.06)" },
+  { week: 4,  label: "This month",     sublabel: "Within 4 weeks",     color: "var(--primary)",    bg: "rgba(26,92,58,0.06)" },
+  { week: 12, label: "When ready",     sublabel: "Within 3 months",    color: "var(--ink-mute)",   bg: "rgba(0,0,0,0.03)" },
 ];
 
 export default function ActionPlanTimeline({ items, summary, totalEstimatedValue }: ActionPlanTimelineProps) {
+  const activeColumns = COLUMNS.filter((col) => items.some((i) => i.weekToApply === col.week));
+  const cols = activeColumns.length > 0 ? activeColumns : COLUMNS;
+
   return (
-    <div className="space-y-6">
-      {/* Summary */}
+    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+
+      {/* Summary card */}
       {(summary || totalEstimatedValue) && (
-        <div className="card p-5 flex items-start justify-between gap-4">
-          <p className="text-tx-secondary text-sm leading-relaxed flex-1">{summary}</p>
+        <div style={{
+          background: "var(--paper)",
+          border: "0.5px solid var(--line)",
+          borderRadius: 12,
+          padding: "20px 24px",
+          display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 24,
+        }}>
+          {summary && (
+            <p style={{ fontSize: 13, color: "var(--ink-2)", lineHeight: 1.65, flex: 1 }}>
+              {summary}
+            </p>
+          )}
           {totalEstimatedValue && (
-            <div className="shrink-0 text-right">
-              <p className="text-xs text-tx-secondary uppercase tracking-wider">Est. total value</p>
-              <p className="text-accent-blue font-bold text-lg">{totalEstimatedValue}</p>
+            <div style={{ flexShrink: 0, textAlign: "right" }}>
+              <p style={{
+                fontFamily: "var(--font-mono)", fontSize: 10, fontWeight: 600,
+                letterSpacing: "0.1em", textTransform: "uppercase",
+                color: "var(--ink-mute)", marginBottom: 4,
+              }}>
+                Est. total value
+              </p>
+              <p style={{ fontSize: 20, fontWeight: 700, color: "var(--primary)", letterSpacing: "-0.02em" }}>
+                {totalEstimatedValue}
+              </p>
             </div>
           )}
         </div>
       )}
 
-      {/* Dynamic-column timeline */}
-      {(() => {
-        const activeColumns = COLUMNS.filter(col => items.some(i => i.weekToApply === col.week));
-        const columnsToRender = activeColumns.length > 0 ? activeColumns : COLUMNS;
-        return (
-          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${columnsToRender.length}, 1fr)`, gap: 16 }}>
-            {columnsToRender.map(({ week, label, sublabel }) => {
-              const columnItems = items.filter((i) => i.weekToApply === week);
-              if (columnItems.length === 0) return null;
-              return (
-                <div key={week} className="space-y-3">
-                  {/* Column header */}
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center shrink-0">
-                      <span className="text-accent-blue text-xs font-bold">{week}</span>
-                    </div>
+      {/* Timeline columns */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: `repeat(${cols.length}, 1fr)`,
+        gap: 14,
+        alignItems: "start",
+      }}>
+        {cols.map(({ week, label, sublabel, color, bg }) => {
+          const columnItems = items.filter((i) => i.weekToApply === week);
+          if (columnItems.length === 0) return null;
+
+          return (
+            <div key={week} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+
+              {/* Column header */}
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 2 }}>
+                <div style={{
+                  width: 26, height: 26, borderRadius: "50%", flexShrink: 0,
+                  background: bg,
+                  border: `1px solid ${color}33`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color, fontFamily: "var(--font-mono)" }}>
+                    {week}
+                  </span>
+                </div>
+                <div>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: "var(--ink)", lineHeight: 1.2 }}>{label}</p>
+                  <p style={{ fontSize: 10, color: "var(--ink-mute)", marginTop: 1 }}>{sublabel}</p>
+                </div>
+              </div>
+
+              {/* Items */}
+              {columnItems.map((item) => {
+                const applyUrl = applyEnrichment[item.serviceId]?.applyUrl;
+                return (
+                  <div
+                    key={item.serviceId}
+                    style={{
+                      background: "var(--paper)",
+                      border: "0.5px solid var(--line)",
+                      borderTop: `2px solid ${color}`,
+                      borderRadius: 10,
+                      padding: "14px 14px 12px",
+                      display: "flex", flexDirection: "column", gap: 10,
+                    }}
+                  >
+                    {/* Name + agency */}
                     <div>
-                      <p className="text-tx-primary font-semibold text-sm">{label}</p>
-                      <p className="text-tx-secondary text-[10px]">{sublabel}</p>
+                      <p style={{ fontSize: 12, fontWeight: 700, color: "var(--ink)", lineHeight: 1.35 }}>
+                        {item.serviceName}
+                      </p>
+                      <p style={{ fontSize: 10, color: "var(--ink-mute)", marginTop: 2 }}>{item.agency}</p>
                     </div>
-                  </div>
 
-                  {/* Items */}
-                  {columnItems.map((item) => (
-                    <div
-                      key={item.serviceId}
-                      className={`card p-4 space-y-3 ${
-                        week === 1 ? "priority-high" : week === 2 ? "priority-medium" : "priority-low"
-                      }`}
-                    >
+                    {/* Action */}
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: 5 }}>
+                      <CheckCircle size={11} color="var(--eligible)" style={{ flexShrink: 0, marginTop: 1 }} />
+                      <span style={{ fontSize: 11, color: "var(--ink-2)", lineHeight: 1.45 }}>{item.action}</span>
+                    </div>
+
+                    {/* Amount */}
+                    {item.amount && (
+                      <p style={{ fontSize: 13, fontWeight: 700, color: "var(--primary)" }}>
+                        {item.amount}
+                      </p>
+                    )}
+
+                    {/* Deadline */}
+                    <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                      <Clock size={10} color="var(--partial)" style={{ flexShrink: 0 }} />
+                      <span style={{ fontSize: 10, color: "var(--partial)", lineHeight: 1.4 }}>{item.deadline}</span>
+                    </div>
+
+                    {/* Documents */}
+                    {item.documents.length > 0 && (
                       <div>
-                        <p className="text-tx-primary font-semibold text-xs leading-snug">{item.serviceName}</p>
-                        <p className="text-tx-secondary text-[11px] mt-0.5">{item.agency}</p>
-                      </div>
-
-                      <div className="flex items-center gap-1 text-[11px] text-tx-secondary">
-                        <CheckCircle className="w-3 h-3 text-accent-blue shrink-0" />
-                        <span>{item.action}</span>
-                      </div>
-
-                      {item.amount && (
-                        <p className="text-accent-blue font-bold text-xs">{item.amount}</p>
-                      )}
-
-                      <div className="flex items-center gap-1 text-[11px] text-warning">
-                        <Clock className="w-3 h-3 shrink-0" />
-                        {item.deadline}
-                      </div>
-
-                      {item.documents.length > 0 && (
-                        <div>
-                          <div className="flex items-center gap-1 text-[10px] text-tx-secondary mb-1">
-                            <FileText className="w-3 h-3" />
-                            Docs needed
-                          </div>
-                          <div className="flex flex-wrap gap-1">
-                            {item.documents.slice(0, 3).map((d) => (
-                              <span key={d} className="text-[10px] bg-bg-tertiary text-tx-secondary px-1.5 py-0.5 rounded border border-[#1E2D4A]">
-                                {d}
-                              </span>
-                            ))}
-                            {item.documents.length > 3 && (
-                              <span className="text-[10px] text-tx-secondary">+{item.documents.length - 3}</span>
-                            )}
-                          </div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: 5 }}>
+                          <FileText size={10} color="var(--ink-faint)" />
+                          <span style={{ fontSize: 10, color: "var(--ink-mute)", fontWeight: 500 }}>Docs needed</span>
                         </div>
-                      )}
-
-                      {item.tips.length > 0 && (
-                        <div className="bg-accent-blue/5 border border-accent-blue/15 rounded-lg p-2">
-                          <p className="text-[11px] text-accent-blue leading-snug">{item.tips[0]}</p>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                          {item.documents.slice(0, 3).map((d) => (
+                            <span key={d} style={{
+                              fontSize: 10,
+                              background: "var(--bg-alt)",
+                              color: "var(--ink-mute)",
+                              border: "0.5px solid var(--line)",
+                              borderRadius: 4,
+                              padding: "2px 7px",
+                            }}>
+                              {d}
+                            </span>
+                          ))}
+                          {item.documents.length > 3 && (
+                            <span style={{ fontSize: 10, color: "var(--ink-faint)" }}>
+                              +{item.documents.length - 3} more
+                            </span>
+                          )}
                         </div>
-                      )}
+                      </div>
+                    )}
 
-                      {/* Actions */}
-                      <div className="flex gap-1.5 pt-1">
+                    {/* Tip */}
+                    {item.tips.length > 0 && (
+                      <div style={{
+                        background: "var(--primary-soft)",
+                        border: "1px solid rgba(26,92,58,0.15)",
+                        borderRadius: 7,
+                        padding: "7px 10px",
+                      }}>
+                        <p style={{ fontSize: 11, color: "var(--primary)", lineHeight: 1.5 }}>
+                          {item.tips[0]}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Ask + Apply buttons */}
+                    <div style={{ display: "flex", gap: 6, paddingTop: 2 }}>
+                      <Link
+                        href={`/chat/entitlement-${item.serviceId}`}
+                        style={{
+                          flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 4,
+                          fontSize: 11, fontWeight: 600, color: "var(--ink-mute)",
+                          background: "var(--bg-alt)",
+                          border: "0.5px solid var(--line)",
+                          borderRadius: 6, padding: "6px 0",
+                          textDecoration: "none",
+                          transition: "color var(--dur-fast), border-color var(--dur-fast)",
+                        }}
+                        onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = "var(--primary)"; el.style.borderColor = "rgba(26,92,58,0.25)"; }}
+                        onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.color = "var(--ink-mute)"; el.style.borderColor = "var(--line)"; }}
+                      >
+                        <MessageSquare size={10} /> Ask
+                      </Link>
+
+                      {applyUrl ? (
+                        <a
+                          href={applyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 4,
+                            fontSize: 11, fontWeight: 600, color: "var(--primary)",
+                            background: "var(--primary-soft)",
+                            border: "0.5px solid rgba(26,92,58,0.2)",
+                            borderRadius: 6, padding: "6px 0",
+                            textDecoration: "none",
+                            transition: "background var(--dur-fast)",
+                          }}
+                          onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(26,92,58,0.15)"; }}
+                          onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "var(--primary-soft)"; }}
+                        >
+                          <ExternalLink size={10} /> Apply
+                        </a>
+                      ) : (
                         <Link
                           href={`/chat/entitlement-${item.serviceId}`}
-                          className="flex-1 flex items-center justify-center gap-1 text-[11px] font-semibold text-tx-secondary border border-[#1E2D4A] rounded-lg py-1.5 hover:border-accent-blue/30 hover:text-accent-blue transition-colors"
+                          style={{
+                            flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 4,
+                            fontSize: 11, fontWeight: 600, color: "var(--ink-mute)",
+                            background: "var(--bg-alt)",
+                            border: "0.5px solid var(--line)",
+                            borderRadius: 6, padding: "6px 0",
+                            textDecoration: "none",
+                          }}
                         >
-                          <MessageSquare className="w-3 h-3" />
-                          Ask
+                          <ExternalLink size={10} /> Apply
                         </Link>
-                        {applyEnrichment[item.serviceId]?.applyUrl ? (
-                          <a
-                            href={applyEnrichment[item.serviceId].applyUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 flex items-center justify-center gap-1 text-[11px] font-semibold text-accent-blue border border-accent-blue/30 rounded-lg py-1.5 hover:bg-accent-blue/10 transition-colors"
-                          >
-                            <ExternalLink className="w-3 h-3" />
-                            Apply
-                          </a>
-                        ) : (
-                          <Link
-                            href={`/chat/entitlement-${item.serviceId}`}
-                            className="flex-1 flex items-center justify-center gap-1 text-[11px] font-semibold text-tx-secondary border border-[#1E2D4A] rounded-lg py-1.5 hover:border-accent-blue/30 hover:text-accent-blue transition-colors"
-                          >
-                            <ExternalLink className="w-3 h-3" />
-                            Apply
-                          </Link>
-                        )}
-                      </div>
+                      )}
                     </div>
-                  ))}
-                </div>
-              );
-            })}
-          </div>
-        );
-      })()}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
