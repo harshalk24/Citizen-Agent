@@ -223,18 +223,25 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
 
             {/* Section label */}
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-              <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em", margin: 0, whiteSpace: "nowrap" }}>
-                What you can claim
-              </h2>
-              {services.length > 0 && (
-                <span style={{
-                  fontSize: 11, fontWeight: 600, color: "var(--primary)",
-                  background: "rgba(26,92,58,0.08)", border: "1px solid rgba(26,92,58,0.18)",
-                  borderRadius: 999, padding: "1px 9px", fontFamily: "var(--font-mono)",
-                }}>
-                  {services.length}
-                </span>
-              )}
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: "var(--primary)", borderRadius: 8,
+                padding: "6px 14px", flexShrink: 0,
+              }}>
+                <FileText size={13} color="#fff" />
+                <h2 style={{ fontSize: 14, fontWeight: 700, color: "#fff", margin: 0, letterSpacing: "-0.01em", whiteSpace: "nowrap" }}>
+                  What you can claim
+                </h2>
+                {services.length > 0 && (
+                  <span style={{
+                    fontSize: 11, fontWeight: 700, color: "var(--primary)",
+                    background: "#fff", borderRadius: 999, padding: "0px 7px",
+                    fontFamily: "var(--font-mono)", lineHeight: "18px", display: "inline-block",
+                  }}>
+                    {services.length}
+                  </span>
+                )}
+              </div>
               <div style={{ flex: 1, height: "0.5px", background: "var(--line)" }} />
               {hasProfile && (
                 <Link
@@ -244,7 +251,7 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
                     fontWeight: 600, flexShrink: 0, display: "flex", alignItems: "center", gap: 4,
                   }}
                 >
-                  <FileText size={12} /> Refresh
+                  Refresh →
                 </Link>
               )}
             </div>
@@ -357,9 +364,16 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
             {locationServices.length > 0 && (
               <div style={{ marginTop: 24 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-                  <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em", margin: 0, whiteSpace: "nowrap" }}>
-                    {countryFlag(citizen.country)} New in {countryName(citizen.country)}
-                  </h2>
+                  <div style={{
+                    display: "inline-flex", alignItems: "center", gap: 8,
+                    background: "var(--primary)", borderRadius: 8,
+                    padding: "6px 14px", flexShrink: 0,
+                  }}>
+                    <span style={{ fontSize: 14, lineHeight: 1 }}>{countryFlag(citizen.country)}</span>
+                    <h2 style={{ fontSize: 14, fontWeight: 700, color: "#fff", margin: 0, letterSpacing: "-0.01em", whiteSpace: "nowrap" }}>
+                      New in {countryName(citizen.country)}
+                    </h2>
+                  </div>
                   <div style={{ flex: 1, height: "0.5px", background: "var(--line)" }} />
                   <span style={{ fontSize: 11, color: "var(--ink-mute)", flexShrink: 0, fontFamily: "var(--font-mono)" }}>Recently added</span>
                 </div>
@@ -419,17 +433,24 @@ export default function DashboardClient({ citizen, savedServices: initial, deadl
                     const rel     = formatRelativeDate(new Date(d.dueDate));
                     const urgency = deadlineUrgency(rel);
                     return (
-                      <div key={d.id} style={{ display: "flex", alignItems: "flex-start", gap: 9 }}>
+                      <div key={d.id} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                         <button
                           onClick={() => toggleDeadline(d)}
                           title="Mark complete"
-                          style={{ flexShrink: 0, marginTop: 2, background: "none", border: "none", cursor: "pointer", color: URGENCY_COLOR[urgency], padding: 0, lineHeight: 1 }}
+                          style={{
+                            flexShrink: 0,
+                            marginTop: 3,
+                            background: "none", border: "none", cursor: "pointer",
+                            color: URGENCY_COLOR[urgency], padding: 0,
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                            width: 16, height: 16,
+                          }}
                         >
-                          <Circle size={12} />
+                          <Circle size={14} strokeWidth={1.5} />
                         </button>
-                        <div>
-                          <div style={{ fontSize: 13, fontWeight: 500, color: "var(--ink)" }}>{d.title}</div>
-                          <div style={{ fontSize: 11, color: URGENCY_COLOR[urgency], marginTop: 1 }}>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)", lineHeight: 1.4 }}>{d.title}</div>
+                          <div style={{ fontSize: 11, color: URGENCY_COLOR[urgency], marginTop: 2, fontWeight: 500 }}>
                             {rel} · {new Date(d.dueDate).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
                           </div>
                         </div>
